@@ -1,5 +1,33 @@
 import "./styles.css"
 
+const skills = [
+  {
+    skill: "React",
+    color: "purple",
+    level: "intermediate"
+  },
+  {
+    skill: "Java",
+    color: "orangered",
+    level: "advanced"
+  },
+  {
+    skill: "Spring Boot",
+    color: "green",
+    level: "advanced"
+  },
+  {
+    skill: "Docker",
+    color: "blue",
+    level: "intermediate"
+  },
+  {
+    skill: "Go",
+    color: "lightskyblue",
+    level: "beginner"
+  }
+]
+
 function App() {
 
   return (
@@ -52,18 +80,19 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="React" color="blue" />
-      <Skill skill="Java" color="orangered" />
-      <Skill skill="Spring Boot" color="green" />
-      <Skill skill="Docker" color="purple" />
+      {skills.map((s) => (
+        <Skill key={s.skill} skill={s.skill} color={s.color} level={s.level}/>
+      ))}
     </div>
   )
 }
 
-function Skill({ skill, color }) {
+function Skill({ skill, color, level }) {
   return (
     <div className="skill" style={{ backgroundColor: color }} >
-      <span>{skill}</span>
+      <button title={level} style={{ border: "none", backgroundColor: "transparent", cursor: "pointer" }}>
+        <span>{skill}</span>
+      </button>
     </div>
   )
 }
