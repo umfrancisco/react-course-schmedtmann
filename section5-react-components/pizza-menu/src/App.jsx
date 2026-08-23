@@ -94,17 +94,13 @@ function Menu() {
 
 function Pizza({ pizza }) {
 
-  if (pizza.soldOut) {
-    return null
-  }
-
   return (
-    <li className="pizza">
+    <li className={pizza.soldOut ? "pizza sold-out" : "pizza"}>
       <img src={pizza.photoName} alt={pizza.name} />
       <div>
         <h3>{pizza.name}</h3>
         <p>{pizza.ingredients}</p>
-        <span>{pizza.price + 3}</span>
+        <span>{pizza.soldOut ? "SOLD OUT" : pizza.price + 3}</span>
       </div>
     </li>
   )
