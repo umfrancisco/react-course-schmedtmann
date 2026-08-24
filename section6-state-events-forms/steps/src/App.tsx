@@ -12,15 +12,16 @@ function App() {
   const [step, setStep] = useState(1)
   const [isOpen, setIsOpen] = useState(true)
   const size = messages.length
+  const count = 1
 
   function handlePrevious() {
     if (step > 1) {
-      setStep(step - 1)
+      setStep(s => s - count)
     }
   }
   function handleNext() {
     if (step < size) {
-      setStep(step + 1)
+      setStep(s => s + count)
     }
   }
 
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <>
-    <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
+    <button className="close" onClick={() => setIsOpen(o => !o)}>&times;</button>
     {isOpen && (
       <div className="steps">
         <div className="numbers">
