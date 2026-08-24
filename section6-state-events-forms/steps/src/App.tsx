@@ -9,6 +9,15 @@ const messages = [
 ]
 
 function App() {
+
+  return (
+    <Steps />
+  )
+}
+
+export default App
+
+function Steps() {
   const [step, setStep] = useState(1)
   const [isOpen, setIsOpen] = useState(true)
   const size = messages.length
@@ -53,5 +62,3 @@ function App() {
     </>
   )
 }
-
-export default App
