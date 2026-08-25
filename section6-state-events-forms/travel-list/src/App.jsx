@@ -1,5 +1,10 @@
 import "./index.css"
 
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
+]
+
 function Logo() {
   
   return (
@@ -16,11 +21,23 @@ function Form() {
   )
 }
 
+function Item({ item }) {
+  
+  return (
+    <li>
+      <p>{item.description}</p>
+      <p>{item.quantity}</p>
+    </li>
+  )
+}
+
 function PackingList() {
 
   return (
-    <div className="list">list</div>
-  )
+    <ul className="list">
+      {initialItems.map(item => <Item item={item} />)}
+    </ul>
+  ) 
 }
 
 function Stats() {
