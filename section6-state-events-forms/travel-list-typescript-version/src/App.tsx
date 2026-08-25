@@ -9,7 +9,8 @@ type Item = {
 
 const initialItems: Item[] = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+  { id: 3, description: "Charger", quantity: 1, packed: false },
 ]
 
 function Logo() {
@@ -36,8 +37,10 @@ function Item({ item }: Props) {
   
   return (
     <li>
-      <p>{item.description}</p>
-      <p>{item.quantity}</p>
+      <span style={item.packed ? {textDecoration: "line-through"} : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button className="close-btn">&times;</button>
     </li>
   )
 }
@@ -45,9 +48,11 @@ function Item({ item }: Props) {
 function PackingList() {
 
   return (
-    <ul className="list">
-      {initialItems.map(item => <Item item={item} />)}
-    </ul>
+    <div className="list">
+      <ul>
+        {initialItems.map(item => <Item item={item} />)}
+      </ul>
+    </div>
   ) 
 }
 
