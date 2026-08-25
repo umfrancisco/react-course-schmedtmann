@@ -2,8 +2,10 @@ import { useState } from "react"
 import "./styles.css"
 
 function Counter() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(1)
   const [count, setCount] = useState(0)
+  const date = new Date()
+  date.setDate(date.getDate() + count)
     
   return (
     <div className="small-container">
@@ -13,10 +15,13 @@ function Counter() {
         <button onClick={() => setStep(s => s + 1)}>+</button>
       </div>
       <div className="count">
-        <button onClick={() => setCount(c => c - 1)}>-</button>
+        <button onClick={() => setCount(c => c - step)}>-</button>
         <span>Count: {count}</span>
-        <button onClick={() => setCount(c => c + 1)}>+</button>
+        <button onClick={() => setCount(c => c + step)}>+</button>
       </div>
+      <p>
+        {count === 0 ? "Today is" : ""} {date.toDateString()}
+      </p>
     </div>
   )
 }
