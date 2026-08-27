@@ -97,6 +97,8 @@ function Stats() {
 
 function App() {
 
+  // state => internal data, owned by the component
+  // props => external data, owned by parent component
   return (
     <div className="app">
       <Logo />
