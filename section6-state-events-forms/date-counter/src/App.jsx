@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./styles.css"
 
 function Counter() {
@@ -10,13 +10,12 @@ function Counter() {
   return (
     <div className="small-container">
       <div className="count">
-        <button onClick={() => setStep(s => s - 1)}>-</button>
-        <span>Step: {step}</span>
-        <button onClick={() => setStep(s => s + 1)}>+</button>
+        <input className="bar" type="range" min="1" max="10" value={step} onChange={e => setStep(parseInt(e.target.value))} />
+        <span>{step}</span>
       </div>
       <div className="count">
         <button onClick={() => setCount(c => c - step)}>-</button>
-        <span>Count: {count}</span>
+        <input type="text" value={count} onChange={e => setCount(parseInt(e.target.value))} />
         <button onClick={() => setCount(c => c + step)}>+</button>
       </div>
       <p>

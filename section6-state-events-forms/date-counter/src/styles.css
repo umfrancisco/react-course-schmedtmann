@@ -8,6 +8,10 @@ body {
     color: #fff;
 }
 
+.bar {
+    width: 100%;
+}
+
 .small-container {
     margin: 16px auto;
     max-width: 256px;
