@@ -24,6 +24,11 @@ body {
     margin-bottom: 8px;
 }
 
+div {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 button {
     border: none;
     border-radius: 8px;
