@@ -4,7 +4,7 @@ type Props = {
   item: ItemObj
 }
 
-function Item({ item }: Props) {
+function PackingItem({ item }: Props) {
   
   return (
     <li>
@@ -16,4 +16,4 @@ function Item({ item }: Props) {
   )
 }
 
-export default Item
+export default PackingItem
