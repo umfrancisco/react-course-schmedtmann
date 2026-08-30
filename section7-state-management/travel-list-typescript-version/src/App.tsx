@@ -5,6 +5,13 @@ import PackingList from "./components/PackingList"
 import Stats from "./components/Stats"
 import "./index.css"
 
+const data: ItemObj[] = [
+  { id: 1, description: "socks", quantity: 10, packed: false },
+  { id: 2, description: "notebook", quantity: 1, packed: false },
+  { id: 3, description: "charger", quantity: 1, packed: false },
+  { id: 4, description: "phone", quantity: 1, packed: false }
+]
+
 export type ItemObj = {
   id: number
   description: string
@@ -14,17 +21,21 @@ export type ItemObj = {
 
 function App() {
 
-  const [items, setItems] = useState<ItemObj[]>([])
+  const [items, setItems] = useState<ItemObj[]>(data)
 
-  function handleAddItems(item: ItemObj) {
+  function handleAddItem(item: ItemObj) {
     setItems(items => [...items, item])
+  }
+
+  function handleDeleteItem(id: number) {
+    setItems(items => items.filter(item => item.id !== id))
   }
 
   return (
     <div className="app">
       <Logo />
-      <Form onAddItems={handleAddItems} />
-      <PackingList items={items} />
+      <Form onAddItem={handleAddItem} />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} />
       <Stats />
     </div>
   )

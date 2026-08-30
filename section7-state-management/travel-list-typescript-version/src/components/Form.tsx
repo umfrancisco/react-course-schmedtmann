@@ -2,10 +2,10 @@ import { useState } from "react"
 import type { ItemObj } from "../App"
 
 type Props = {
-  onAddItems: (item: ItemObj) => void
+  onAddItem: (item: ItemObj) => void
 }
 
-function Form({ onAddItems }: Props) {
+function Form({ onAddItem }: Props) {
   const [description, setDescription] = useState("")
   const [quantity, setQuantity] = useState(1)
 
@@ -23,7 +23,7 @@ function Form({ onAddItems }: Props) {
       packed: false
     }
 
-    onAddItems(item)
+    onAddItem(item)
 
     setDescription("")
     setQuantity(1)

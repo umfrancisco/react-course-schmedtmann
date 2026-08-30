@@ -3,14 +3,15 @@ import Item from "./Item"
 
 type Props = {
   items: ItemObj[]
+  onDeleteItem: (id: number) => void
 }
 
-function PackingList({ items }: Props) {
+function PackingList({ items, onDeleteItem }: Props) {
 
   return (
     <div className="list">
       <ul>
-        {items.map(item => <Item key={item.id} item={item} />)}
+        {items.map(item => <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />)}
       </ul>
     </div>
   ) 
