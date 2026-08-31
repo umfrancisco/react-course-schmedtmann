@@ -6,9 +6,10 @@ type Props = {
   items: ItemObj[]
   onDeleteItem: (id: number) => void
   onToggleItem: (id: number) => void
+  onClearList: () => void
 }
 
-function PackingList({ items, onDeleteItem, onToggleItem }: Props) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }: Props) {
 
   const [sortBy, setSortBy] = useState("input")
   let sortedItems: ItemObj[] = []
@@ -38,6 +39,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }: Props) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={onClearList}>Clear list</button>
       </div>
     </div>
   ) 
