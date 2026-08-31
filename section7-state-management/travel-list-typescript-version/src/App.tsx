@@ -6,10 +6,8 @@ import Stats from "./components/Stats"
 import "./index.css"
 
 const data: ItemObj[] = [
-  { id: 1, description: "socks", quantity: 10, packed: false },
-  { id: 2, description: "notebook", quantity: 1, packed: false },
-  { id: 3, description: "charger", quantity: 1, packed: false },
-  { id: 4, description: "phone", quantity: 1, packed: false }
+  { id: 1, description: "notebook", quantity: 1, packed: false },
+  { id: 2, description: "phone", quantity: 1, packed: false }
 ]
 
 export type ItemObj = {
@@ -40,7 +38,7 @@ function App() {
       <Logo />
       <Form onAddItem={handleAddItem} />
       <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
-      <Stats />
+      <Stats items={items} />
     </div>
   )
 }
