@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Button from "./Button"
+import StepMessage from "./StepMessage"
 
 type Props = {
     messages: string[]
@@ -34,9 +35,9 @@ function Steps({ messages }: Props) {
           <div className={step >= 3 ? "active" : ""}>3</div>
           <div className={step >= 4 ? "active" : ""}>4</div>
         </div>
-        <p className="message">
-          Step {step}: {messages[step - 1]}
-        </p>
+        <StepMessage step={step}>
+          {messages[step - 1]}
+        </StepMessage>
         <div className="buttons">
           <Button btnStyle={{ backgroundColor: "#7950f2", color: "#fff" }} onClick={handlePrevious}>
             <p>Previous</p>
