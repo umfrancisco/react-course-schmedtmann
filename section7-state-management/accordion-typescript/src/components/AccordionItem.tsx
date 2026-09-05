@@ -1,17 +1,19 @@
-import { useState } from "react"
+import { type Dispatch, type SetStateAction } from "react"
 
 type Props = {
     num: number
     title: string
-    text: string
+    children: string
+    curOpen: number | null
+    onOpen: Dispatch<SetStateAction<number | null>>
 }
 
-function AccordionItem({ num, title, text }: Props) {
+function AccordionItem({ num, title, children, curOpen, onOpen }: Props) {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const isOpen = num === curOpen
 
     const handleToggle = () => {
-        setIsOpen(!isOpen)
+        onOpen(isOpen ? null : num)
     }
 
     return (
@@ -19,7 +21,7 @@ function AccordionItem({ num, title, text }: Props) {
             <p className="number">{num < 9 ? `0${num}` : num}</p>
             <p className="title">{title}</p>
             <p className="icon">{isOpen ? "-" : "+"}</p>
-            {isOpen && <div className="content-box">{text}</div>}
+            {isOpen && <div className="content-box">{children}</div>}
         </div>
     )
 
