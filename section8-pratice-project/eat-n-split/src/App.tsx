@@ -1,8 +1,13 @@
+import FriendsList from "./components/FriendsList"
 
 function App() {
 
   return (
-    <div>hello</div>
+    <div className="app">
+      <div className="sidebar">
+        <FriendsList />
+      </div>
+    </div>
   )
 }
 
