@@ -2,12 +2,13 @@ import type { ReactNode } from "react"
 
 type Props = {
   children: ReactNode
+  onClick?: () => void
 }
 
-function Button({ children }: Props) {
+function Button({ children, onClick }: Props) {
 
   return (
-    <button className="button">{children}</button>
+    <button className="button" onClick={onClick}>{children}</button>
   )
 }
 
