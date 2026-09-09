@@ -3,6 +3,7 @@
   --color-light: #ffe8cc;
   --color-medium: #ffa94d;
   --color-dark: #ff922b;
+  --text-color-dark: #495057;
 }
 
 * {
@@ -22,7 +23,7 @@ li {
 }
 
 li:hover {
-  color: #495057;
+  color: var(--text-color-dark);
 }
 
 body {
@@ -80,6 +81,7 @@ body {
 .selected,
 .sidebar li:hover {
   background-color: var(--color-lightest);
+  color: var(--text-color-dark);
 }
 
 .sidebar li img {
