@@ -3,17 +3,28 @@ import Button from "./Button"
 
 type Props = {
   friend: Friend
+  onSplitBill: (value: number) => void
 }
 
-function FormSplitBill({ friend }: Props) {
+function FormSplitBill({ friend, onSplitBill }: Props) {
 
   const [bill, setBill] = useState(0)
   const [paidByUser, setPaidByUser] = useState(0)
   const [whoIsPaying, setWhoIsPaying] = useState("user")
   const paidByFriend = bill ? bill - paidByUser : 0
 
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    if (!bill || !paidByUser) {
+      return
+    }
+
+    onSplitBill(whoIsPaying === "user" ? paidByFriend : paidByUser * -1)
+  }
+
   return (
-    <form className="form-split-bill">
+    <form className="form-split-bill" onSubmit={handleSubmit}>
       <h2>Split a bill with {friend.name}</h2>
 
       <label>Bill value</label>
