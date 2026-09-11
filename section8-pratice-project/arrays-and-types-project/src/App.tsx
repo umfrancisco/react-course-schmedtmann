@@ -1,64 +1,40 @@
-
-const data: Student[] = [
-  {
-    id: 1,
-    name: "Ann",
-    courses: ["Python", "JavaScript"],
-    score: 70
-  },
-  {
-    id: 2,
-    name: "Bob",
-    courses: ["JavaScript", "Node.js"],
-    score: 80
-  },
-  {
-    id: 3,
-    name: "Abe",
-    courses: ["TypeScript", "Go"],
-    score: 60
-  }
-]
-
-type Student = {
-  id: number
-  name: string
-  courses: string[]
-  score: number
-}
+import type { ReactNode } from "react"
 
 type Props = {
-  student: Student
+  children: ReactNode
 }
 
-function Card({ student }: Props) {
-
+function Math({ children }: Props) {
+  
   return (
-    <tr>
-      <td>{student.name}</td>
-      <td>{student.courses.map(course => course.concat(", "))}</td>
-      <td>{student.score}</td>
-    </tr>
+    <>
+      <span>{children}</span>
+      <br/>
+    </>
   )
 }
 
+const arr = [1, 3, 5, 7, 9, 11]
+
 function App() {
+
+  function getAvg(arr: number[]) {
+    let sum = 0
+    arr.forEach(el => sum += el)
+    return sum / arr.length
+  }
+
+  function getMax(arr: number[]) {
+    let max = 0
+    arr.forEach(el => el > max ? max = el : el)
+    return max
+  }
 
   return (
     <div className="container">
-      <h2>Table Students</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Courses</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(student => <Card key={student.id} student={student}/>)}
-        </tbody>
-      </table>
+        <Math>Array = {arr.map((el, index) => index === arr.length - 1 ? el : el.toString().concat(", "))}</Math>
+        <Math>Average = {getAvg(arr)}</Math>
+        <Math>Max = {getMax(arr)}</Math>
     </div>
   )
 }
