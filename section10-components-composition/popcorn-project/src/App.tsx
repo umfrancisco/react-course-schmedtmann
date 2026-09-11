@@ -47,7 +47,7 @@ const tempWatchedData: Watched[] = [
   },
 ]
 
-const average = (arr) =>
+const average = (arr: number[]) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0)
 
 function App() {
