@@ -3,17 +3,20 @@ const data: Student[] = [
   {
     id: 1,
     name: "Ann",
-    courses: ["Python", "JavaScript"]
+    courses: ["Python", "JavaScript"],
+    score: 70
   },
   {
     id: 2,
     name: "Bob",
-    courses: ["JavaScript", "Node.js"]
+    courses: ["JavaScript", "Node.js"],
+    score: 80
   },
   {
     id: 3,
     name: "Abe",
-    courses: ["TypeScript", "Go"]
+    courses: ["TypeScript", "Go"],
+    score: 60
   }
 ]
 
@@ -21,6 +24,7 @@ type Student = {
   id: number
   name: string
   courses: string[]
+  score: number
 }
 
 type Props = {
@@ -30,25 +34,31 @@ type Props = {
 function Card({ student }: Props) {
 
   return (
-    <div>
-      <p>{student.name}</p>
-      <ul>
-        {student.courses.map(
-          course => <li>{course}</li>
-        )}
-      </ul>
-    </div>
+    <tr>
+      <td>{student.name}</td>
+      <td>{student.courses.map(course => course.concat(", "))}</td>
+      <td>{student.score}</td>
+    </tr>
   )
 }
 
 function App() {
 
   return (
-    <div>
-      <h4>Students</h4>
-      <div>
-        {data.map(student => <Card student={student}/>)}
-      </div>
+    <div className="container">
+      <h2>Table Students</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Courses</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(student => <Card key={student.id} student={student}/>)}
+        </tbody>
+      </table>
     </div>
   )
 }

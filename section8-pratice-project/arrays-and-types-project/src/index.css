@@ -4,7 +4,16 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div {
+.container {
   margin: 0 auto;
   max-width: 1024px;
+}
+
+table, th, td {
+  border: 1px solid #b8b8b8;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 32px;
 }
