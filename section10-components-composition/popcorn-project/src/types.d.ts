@@ -6,11 +6,7 @@ declare type Movie = {
   poster: string
 }
 
-declare type Watched = {
-  imdbID: string
-  title: string
-  year: string
-  poster: string
+declare type Watched = Movie & {
   runtime: number
   imdbRating: number
   userRating: number
