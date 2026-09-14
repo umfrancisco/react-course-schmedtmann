@@ -3,7 +3,7 @@ type Props = {
 };
 
 const average = (arr: number[]) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+  arr.reduce((acc, cur) => acc + cur / arr.length, 0);
 
 function WatchedSummary({ watched }: Props) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
