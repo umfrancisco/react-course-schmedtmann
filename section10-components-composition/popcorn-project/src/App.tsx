@@ -12,7 +12,7 @@ function App() {
       <NavBar movies={movies} />
       <Main movies={movies} watched={watched} />
     </>
-  );
+  )
 }
 
 export default App

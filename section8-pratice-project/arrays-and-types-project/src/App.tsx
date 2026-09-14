@@ -1,39 +1,71 @@
-import { useState } from "react"
+
+type Student = {
+  id: number
+  name: string
+  grade: {
+    math: number
+    english: number
+  }
+}
+
+function getRandom() {
+  return Math.floor(Math.random() * 100)
+}
+
+const data: Student[] = [
+  {
+    id: 1,
+    name: "Abe",
+    grade: {
+      math: getRandom(),
+      english: getRandom()
+    }
+  },
+  {
+    id: 2,
+    name: "Bob",
+    grade: {
+      math: getRandom(),
+      english: getRandom()
+    }
+  },
+  {
+    id: 3,
+    name: "Ann",
+    grade: {
+      math: getRandom(),
+      english: getRandom()
+    }
+  }
+]
 
 function App() {
 
-  const [arr, setArr] = useState<number[]>([])
-  const [num, setNum] = useState<number>(0)
+  const mathGrades = data.map(student => student.grade.math)
+  const englishGrades= data.map(student => student.grade.english)
+  const mathAvg = handleMathAvg()
+  const englishAvg = handleEnglishAvg()
 
-  function getAvg(arr: number[]) {
-    let sum = 0
-    arr.forEach(el => sum += el)
-    return sum / arr.length
+  function handleMathAvg() {
+    return mathGrades.reduce((acc, cur) => acc + cur, 0) / mathGrades.length
   }
 
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setArr([...arr, num])
-    setNum(0)
+  function handleEnglishAvg() {
+    return englishGrades.reduce((acc, cur) => acc + cur, 0) / englishGrades.length
   }
 
   return (
     <div className="container">
-        <form onSubmit={handleSubmit}>
-          <label>Enter a number: </label>
-          <input type="text" value={num} onChange={(e) => setNum(Number(e.target.value))}/>
-          <button>Enter</button>
-        </form>
-        {arr.length > 0 ? (
-          <div>
-            <span>Array = {arr.map((el, index) => index === arr.length - 1 ? el : el.toString().concat(", "))}</span>
-            <br/>
-            <span>Average = {getAvg(arr)}</span>
-            <br/>
-          </div>
-        ) : (
-          <p>Empty array</p>
-        )}
+        <div>
+          {data.map(el => (
+            <p key={el.id}>Name: {el.name}, Math: {el.grade.math}, English: {el.grade.english}</p>
+          ))}
+        </div>
+        <div>
+          <p>Math Average: {Math.round(mathAvg)}</p>
+          <p>English Average: {Math.round(englishAvg)}</p>
+        </div>
+        <button onClick={() => window.location.reload()}>Reload page</button>
     </div>
   )
 }
