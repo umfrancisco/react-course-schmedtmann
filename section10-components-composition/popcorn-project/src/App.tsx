@@ -1,6 +1,6 @@
 import { useState } from "react"
 import NavBar from "./components/NavBar"
-import Main from "./components/Main";
+import Main from "./components/Main"
 import { tempMovieData, tempWatchedData } from "./data.ts"
 
 function App() {

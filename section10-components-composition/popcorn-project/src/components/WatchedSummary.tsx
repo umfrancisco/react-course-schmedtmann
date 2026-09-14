@@ -5,7 +5,7 @@ type Props = {
 
 const average = (arr: number[]) => arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0)
 
-function WatchedSummry({ watched }: Props) {
+function WatchedSummary({ watched }: Props) {
 
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating))
   const avgUserRating = average(watched.map((movie) => movie.userRating))
@@ -36,5 +36,5 @@ function WatchedSummry({ watched }: Props) {
   )
 }
 
-export default WatchedSummry
+export default WatchedSummary
 
