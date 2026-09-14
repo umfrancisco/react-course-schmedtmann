@@ -1,16 +1,17 @@
-import WatchedMovie from "./WatchedMovie"
+import WatchedMovie from "./WatchedMovie";
 
 type Props = {
-  watched: Watched[]
-}
+  watched: Watched[];
+};
 
 function WatchedList({ watched }: Props) {
-
   return (
     <ul className="list">
-      {watched.map((movie) => <WatchedMovie key={movie.imdbID} movie={movie}/>)}
+      {watched.map((movie) => (
+        <WatchedMovie key={movie.imdbID} movie={movie} />
+      ))}
     </ul>
-  )
+  );
 }
 
-export default WatchedList
+export default WatchedList;

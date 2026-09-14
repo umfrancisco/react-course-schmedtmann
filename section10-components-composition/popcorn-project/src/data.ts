@@ -1,4 +1,3 @@
-
 export const tempMovieData: Movie[] = [
   {
     imdbID: "tt1375666",
@@ -44,4 +43,4 @@ export const tempWatchedData: Watched[] = [
     imdbRating: 8.5,
     userRating: 9,
   },
-]
+];

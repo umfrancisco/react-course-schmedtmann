@@ -1,10 +1,8 @@
-
 type Props = {
-  movie: Movie
-}
+  movie: Movie;
+};
 
 function Movie({ movie }: Props) {
-
   return (
     <li>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -16,7 +14,7 @@ function Movie({ movie }: Props) {
         </p>
       </div>
     </li>
-  )
+  );
 }
 
-export default Movie
+export default Movie;

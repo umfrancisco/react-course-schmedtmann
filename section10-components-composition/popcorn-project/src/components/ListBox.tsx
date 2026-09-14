@@ -1,23 +1,20 @@
-import { useState } from "react"
-import MovieList from "./MovieList"
-import ToggleButton from "./ToggleButton"
+import { useState } from "react";
+import MovieList from "./MovieList";
+import ToggleButton from "./ToggleButton";
 
 type Props = {
-  movies: Movie[]
-}
+  movies: Movie[];
+};
 
 function ListBox({ movies }: Props) {
-
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="box">
       <ToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && (
-        <MovieList movies={movies} />
-      )}
+      {isOpen && <MovieList movies={movies} />}
     </div>
-  )
+  );
 }
 
-export default ListBox
+export default ListBox;

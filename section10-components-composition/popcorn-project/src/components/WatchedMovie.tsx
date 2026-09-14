@@ -1,10 +1,8 @@
-
 type Props = {
-  movie: Watched
-}
+  movie: Watched;
+};
 
 function WatchedMovie({ movie }: Props) {
-
   return (
     <li key={movie.imdbID}>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -24,7 +22,7 @@ function WatchedMovie({ movie }: Props) {
         </p>
       </div>
     </li>
-  )
+  );
 }
 
-export default WatchedMovie
+export default WatchedMovie;

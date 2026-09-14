@@ -1,15 +1,14 @@
-import { useState } from "react"
-import WatchedSummary from "./WatchedSummary"
-import ToggleButton from "./ToggleButton"
-import WatchedList from "./WatchedList"
+import { useState } from "react";
+import WatchedSummary from "./WatchedSummary";
+import ToggleButton from "./ToggleButton";
+import WatchedList from "./WatchedList";
 
 type Props = {
-  watched: Watched[]
-}
+  watched: Watched[];
+};
 
 function WatchedBox({ watched }: Props) {
-
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="box">
@@ -21,7 +20,7 @@ function WatchedBox({ watched }: Props) {
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default WatchedBox
+export default WatchedBox;
