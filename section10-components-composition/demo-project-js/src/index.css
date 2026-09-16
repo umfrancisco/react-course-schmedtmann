@@ -1,0 +1,60 @@
+:root {
+  --primary-text-color: #fff;
+  --secondary-text-color: #202020;
+  --primary-background-color: #424170;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--primary-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1298px;
+}
+
+.header-container {
+  margin: 0 auto;
+  max-width: 1298px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.header {
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
+.link {
+  margin-right: 8px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.student-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.student {
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  padding: 8px;
+  margin: 16px 8px;
+  border-radius: 8px;
+}
+
+li {
+  list-style-type: none;
+}

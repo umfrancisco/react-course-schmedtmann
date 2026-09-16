@@ -1,17 +1,13 @@
-import Logo from "./Logo";
-import NumResults from "./NumResults";
-import Search from "./Search";
+import type { ReactNode } from "react";
 
 type Props = {
-  movies: Movie[];
+  children: ReactNode
 };
 
-function NavBar({ movies }: Props) {
+function NavBar({ children }: Props) {
   return (
     <nav className="nav-bar">
-      <Logo />
-      <Search />
-      <NumResults size={movies.length} />
+      {children}
     </nav>
   );
 }

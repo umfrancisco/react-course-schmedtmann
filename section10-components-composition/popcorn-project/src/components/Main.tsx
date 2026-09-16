@@ -1,16 +1,13 @@
-import ListBox from "./ListBox";
-import WatchedBox from "./WatchedBox";
+import type { ReactNode } from "react";
 
 type Props = {
-  movies: Movie[];
-  watched: Watched[];
+  children: ReactNode
 };
 
-function Main({ movies, watched }: Props) {
+function Main({ children }: Props) {
   return (
     <main className="main">
-      <ListBox movies={movies} />
-      <WatchedBox watched={watched} />
+      {children}
     </main>
   );
 }
