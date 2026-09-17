@@ -1,18 +1,17 @@
-import { useState } from "react";
-import MovieList from "./MovieList";
+import { useState, type ReactNode } from "react";
 import ToggleButton from "./ToggleButton";
 
 type Props = {
-  movies: Movie[];
+  children: ReactNode;
 };
 
-function ListBox({ movies }: Props) {
+function ListBox({ children }: Props) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="box">
       <ToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && <MovieList movies={movies} />}
+      {isOpen && children}
     </div>
   );
 }

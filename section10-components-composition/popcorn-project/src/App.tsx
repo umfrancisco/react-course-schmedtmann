@@ -7,6 +7,7 @@ import Search from "./components/Search.tsx";
 import NumResults from "./components/NumResults.tsx";
 import ListBox from "./components/ListBox.tsx";
 import WatchedBox from "./components/WatchedBox.tsx";
+import MovieList from "./components/MovieList.tsx";
 
 function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -20,7 +21,9 @@ function App() {
         <NumResults size={movies.length} />
       </NavBar>
       <Main>
-        <ListBox movies={movies} />
+        <ListBox>
+          <MovieList movies={movies} />
+        </ListBox>
         <WatchedBox watched={watched} />
       </Main>
     </>
