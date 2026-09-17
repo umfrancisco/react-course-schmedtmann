@@ -1,24 +1,17 @@
-import { useState } from "react";
-import WatchedSummary from "./WatchedSummary";
+import { useState, type ReactNode } from "react";
 import ToggleButton from "./ToggleButton";
-import WatchedList from "./WatchedList";
 
 type Props = {
-  watched: Watched[];
+  children: ReactNode;
 };
 
-function WatchedBox({ watched }: Props) {
+function WatchedBox({ children }: Props) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="box">
       <ToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && (
-        <>
-          <WatchedSummary watched={watched} />
-          <WatchedList watched={watched} />
-        </>
-      )}
+      {isOpen && children}
     </div>
   );
 }

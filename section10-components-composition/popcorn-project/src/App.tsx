@@ -8,6 +8,8 @@ import NumResults from "./components/NumResults.tsx";
 import ListBox from "./components/ListBox.tsx";
 import WatchedBox from "./components/WatchedBox.tsx";
 import MovieList from "./components/MovieList.tsx";
+import WatchedSummary from "./components/WatchedSummary.tsx";
+import WatchedList from "./components/WatchedList.tsx";
 
 function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -24,7 +26,10 @@ function App() {
         <ListBox>
           <MovieList movies={movies} />
         </ListBox>
-        <WatchedBox watched={watched} />
+        <WatchedBox>
+          <WatchedSummary watched={watched} />
+          <WatchedList watched={watched} />
+        </WatchedBox>
       </Main>
     </>
   );
