@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode;
 };
 
-function WatchedBox({ children }: Props) {
+function Box({ children }: Props) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -16,4 +16,4 @@ function WatchedBox({ children }: Props) {
   );
 }
 
-export default WatchedBox;
+export default Box;

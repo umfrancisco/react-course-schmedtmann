@@ -5,11 +5,10 @@ import { tempMovieData, tempWatchedData } from "./data.ts";
 import Logo from "./components/Logo.tsx";
 import Search from "./components/Search.tsx";
 import NumResults from "./components/NumResults.tsx";
-import ListBox from "./components/ListBox.tsx";
-import WatchedBox from "./components/WatchedBox.tsx";
 import MovieList from "./components/MovieList.tsx";
 import WatchedSummary from "./components/WatchedSummary.tsx";
 import WatchedList from "./components/WatchedList.tsx";
+import Box from "./components/Box.tsx";
 
 function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -23,13 +22,13 @@ function App() {
         <NumResults size={movies.length} />
       </NavBar>
       <Main>
-        <ListBox>
+        <Box>
           <MovieList movies={movies} />
-        </ListBox>
-        <WatchedBox>
+        </Box>
+        <Box>
           <WatchedSummary watched={watched} />
           <WatchedList watched={watched} />
-        </WatchedBox>
+        </Box>
       </Main>
     </>
   );
