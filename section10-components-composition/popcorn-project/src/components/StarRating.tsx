@@ -8,7 +8,6 @@ const constainerStyle = {
 
 const starContainer = {
   display: "flex",
-  gap: "4px",
 };
 
 const textStyle = {
@@ -20,22 +19,28 @@ type Props = {
   maxRating?: number;
 };
 
-function StarRating({ maxRating = 5 }: Props) {
-  const [rating, setRating] = useState(1);
+function StarRating({ maxRating = 10 }: Props) {
+  const [rating, setRating] = useState(0);
+  const [tempRating, setTempRating] = useState(0);
 
   function handleRating(rating: number) {
     setRating(rating);
-    localStorage.setItem(Math.round(Math.random() * 1000).toString(), "Stars: "+rating);
   }
 
   return (
     <div style={constainerStyle}>
       <div style={starContainer}>
         {Array.from({ length: maxRating }, (_, i) => (
-          <Star key={i} onRate={() => handleRating(i + 1)} full={rating > i} />
+          <Star
+            key={i}
+            full={tempRating ? tempRating > i : rating > i}
+            onRate={() => handleRating(i + 1)}
+            onHoverIn={() => setTempRating(i + 1)}
+            onHoverOut={() => setTempRating(0)}
+          />
         ))}
       </div>
-      <p>{rating || ""}</p>
+      <p style={textStyle}>{tempRating || rating || ""}</p>
     </div>
   );
 }
