@@ -18,7 +18,6 @@ function App() {
   return (
     <>
       <StarRating maxRating={5} />
-      <StarRating maxRating={10} />
       <NavBar>
         <Logo />
         <Search />
