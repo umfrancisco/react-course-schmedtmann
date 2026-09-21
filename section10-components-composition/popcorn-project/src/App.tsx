@@ -9,7 +9,6 @@ import MovieList from "./components/MovieList.tsx";
 import WatchedSummary from "./components/WatchedSummary.tsx";
 import WatchedList from "./components/WatchedList.tsx";
 import Box from "./components/Box.tsx";
-import StarRating from "./components/StarRating.tsx";
 
 function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -17,7 +16,6 @@ function App() {
 
   return (
     <>
-      <StarRating maxRating={10} />
       <NavBar>
         <Logo />
         <Search />
