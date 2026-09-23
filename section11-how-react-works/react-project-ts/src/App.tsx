@@ -1,4 +1,4 @@
-import Tabbed from "./components/Tabbed";
+import Tabbed from "./components/Tabbed"
 
 const content: Content[] = [
   {
@@ -19,11 +19,12 @@ const content: Content[] = [
 ]
 
 function App() {
+
   return (
     <div>
       <Tabbed content={content} />
     </div>
-  );
+  )
 }
 
 export default App

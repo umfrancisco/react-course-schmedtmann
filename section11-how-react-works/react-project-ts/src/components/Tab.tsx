@@ -6,6 +6,7 @@ type Props = {
 }
 
 function Tab({ num, activeTab, onClick }: Props) {
+
   return (
     <button
       className={activeTab === num ? "tab active" : "tab"}

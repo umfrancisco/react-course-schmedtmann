@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 
 type Props = {
   item: Content | undefined
@@ -6,14 +6,14 @@ type Props = {
 
 function TabContent({ item }: Props) {
   const [showDetails, setShowDetails] = useState(true)
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(0)
 
   function handleInc() {
-    setLikes(likes + 1);
+    setLikes(l => l +1);
   }
 
   if (item === undefined) {
-    return <div>hello world</div>
+    return <div>Undefined Item</div>
   }
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react"
-import Tab from "./Tab";
-import TabContent from "./TabContent";
-import DifferentContent from "./DifferentContent";
+import Tab from "./Tab"
+import TabContent from "./TabContent"
+import DifferentContent from "./DifferentContent"
 
 type Props = {
   content: Content[]
@@ -20,12 +20,13 @@ function Tabbed({ content }: Props) {
       </div>
 
       {activeTab <= 2 ? (
+        // <TabContent item={content[activeTab]} />
         <TabContent item={content.at(activeTab)} />
       ) : (
         <DifferentContent />
       )}
     </div>
-  );
+  )
 }
 
 export default Tabbed
