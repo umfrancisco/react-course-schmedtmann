@@ -8,8 +8,13 @@ function TabContent({ item }: Props) {
   const [showDetails, setShowDetails] = useState(true)
   const [likes, setLikes] = useState(0)
 
-  function handleInc() {
-    setLikes(l => l +1);
+  function handleInc(i: number) {
+    setLikes(l => l + i)
+  }
+
+  function handleUndo() {
+    setShowDetails(true)
+    setLikes(0)
   }
 
   if (item === undefined) {
@@ -28,13 +33,13 @@ function TabContent({ item }: Props) {
 
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
-          <button onClick={handleInc}>+</button>
-          <button>+++</button>
+          <button onClick={() => handleInc(1)}>+</button>
+          <button onClick={() => handleInc(3)}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Undo</button>
+        <button onClick={handleUndo}>Undo</button>
         <button>Undo in 2s</button>
       </div>
     </div>
