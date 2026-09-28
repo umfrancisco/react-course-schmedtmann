@@ -1,8 +1,8 @@
 declare type Movie = {
   imdbID: string;
-  title: string;
-  year: string;
-  poster: string;
+  Title: string;
+  Year: string;
+  Poster: string;
 };
 
 declare type Watched = Movie & {
