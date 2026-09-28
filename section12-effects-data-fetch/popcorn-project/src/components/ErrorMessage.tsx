@@ -1,12 +1,12 @@
 
 type Props = {
-  message: string
+  error: Error
 }
 
-function ErrorMessage({ message }: Props) {
+function ErrorMessage({ error }: Props) {
 
   return (
-    <p className="error">{message}</p>
+    <p className="error">{error.message}</p>
   )
 }
 

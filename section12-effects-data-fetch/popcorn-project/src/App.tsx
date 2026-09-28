@@ -17,36 +17,32 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [watched, setWatched] = useState<Watched[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const query = "hamletasdasdas";
+  const [error, setError] = useState<Error>();
+  const [query, setQuery] = useState("hamlet");
 
   useEffect(() => {
     setIsLoading(true);
     fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
       .then(res => res.json())
-      .then(data => {
-        if (data.Response === "False") {
-          throw new Error("Movie not found...");
-        } else {
-          setMovies(data.Search);
-        }
-      })
-      .catch(err => setError(err.message))
+      .then(data => setMovies(data.Search))
+      .catch(err => setError(err))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [query]);
+
+  console.log(query)
 
   return (
     <>
       <NavBar>
         <Logo />
-        <Search />
+        <Search query={query} onQuery={setQuery}/>
         <NumResults size={movies ? movies.length : 0} />
       </NavBar>
       <Main>
         <Box>
           {!isLoading && !error && <MovieList movies={movies} />}
           {isLoading && <Loader />}
-          {error && <ErrorMessage message={error} />}
+          {error && <ErrorMessage error={error} />}
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
