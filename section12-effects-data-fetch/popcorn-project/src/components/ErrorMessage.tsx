@@ -1,13 +1,9 @@
-
 type Props = {
-  error: Error
-}
+  error: Error;
+};
 
 function ErrorMessage({ error }: Props) {
-
-  return (
-    <p className="error">{error.message}</p>
-  )
+  return <p className="error">{error.message}</p>;
 }
 
 export default ErrorMessage;

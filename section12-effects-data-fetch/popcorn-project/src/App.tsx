@@ -23,19 +23,17 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
-      .then(res => res.json())
-      .then(data => setMovies(data.Search))
-      .catch(err => setError(err))
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search))
+      .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
   }, [query]);
-
-  console.log(query)
 
   return (
     <>
       <NavBar>
         <Logo />
-        <Search query={query} onQuery={setQuery}/>
+        <Search query={query} onQuery={setQuery} />
         <NumResults size={movies ? movies.length : 0} />
       </NavBar>
       <Main>

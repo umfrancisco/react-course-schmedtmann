@@ -5,11 +5,8 @@ type Props = {
 };
 
 function MovieList({ movies }: Props) {
-
   if (!movies) {
-    return (
-      <p className="error">No movies found...</p>
-    )
+    return <p className="error">No movies found...</p>;
   }
 
   return (

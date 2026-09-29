@@ -1,11 +1,9 @@
-
 type Props = {
-  query: string
-  onQuery: (query: string) => void
-}
+  query: string;
+  onQuery: (query: string) => void;
+};
 
 function Search({ query, onQuery }: Props) {
-
   return (
     <input
       className="search"
