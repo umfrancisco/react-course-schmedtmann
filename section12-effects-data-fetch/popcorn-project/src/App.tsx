@@ -10,6 +10,7 @@ import WatchedList from "./components/WatchedList.tsx";
 import Box from "./components/Box.tsx";
 import Loader from "./components/Loader.tsx";
 import ErrorMessage from "./components/ErrorMessage.tsx";
+import MovieDetails from "./components/MovieDetails.tsx";
 
 const API_KEY = "50b39d14";
 
@@ -19,6 +20,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error>();
   const [query, setQuery] = useState("hamlet");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,6 +31,14 @@ function App() {
       .finally(() => setIsLoading(false));
   }, [query]);
 
+  function handleSelectMovie(id: string) {
+    setSelectedId(selectedId === id ? null : id);
+  }
+
+  function handleCloseMovie() {
+    setSelectedId(null);
+  }
+
   return (
     <>
       <NavBar>
@@ -38,13 +48,21 @@ function App() {
       </NavBar>
       <Main>
         <Box>
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          )}
           {isLoading && <Loader />}
           {error && <ErrorMessage error={error} />}
         </Box>
         <Box>
-          <WatchedSummary watched={watched} />
-          <WatchedList watched={watched} />
+          {selectedId ? (
+            <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} />
+          ) : (
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedList watched={watched} />
+            </>
+          )}
         </Box>
       </Main>
     </>
