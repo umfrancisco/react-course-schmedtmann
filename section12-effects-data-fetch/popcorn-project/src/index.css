@@ -257,7 +257,7 @@ body {
 }
 
 .details img {
-  width: 33%;
+  width: 60%;
 }
 
 .details-overview {
@@ -320,23 +320,14 @@ body {
 
 .btn-back {
   position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
-  height: 2.8rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
   border: none;
-  background-color: #fff;
-  color: var(--color-background-500);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
-  font-family: sans-serif;
-  font-size: 2.4rem;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
   font-weight: bold;
   cursor: pointer;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  left: 8px;
+  top: 8px;
 }
 
 /*

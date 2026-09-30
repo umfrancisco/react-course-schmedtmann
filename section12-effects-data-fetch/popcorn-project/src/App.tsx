@@ -12,8 +12,6 @@ import Loader from "./components/Loader.tsx";
 import ErrorMessage from "./components/ErrorMessage.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";
 
-const API_KEY = "50b39d14";
-
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [watched, setWatched] = useState<Watched[]>([]);
@@ -24,7 +22,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
+    fetch(`${import.meta.env.VITE_API_KEY}&s=${query}`)
       .then((res) => res.json())
       .then((data) => setMovies(data.Search))
       .catch((err) => setError(err))
@@ -32,7 +30,7 @@ function App() {
   }, [query]);
 
   function handleSelectMovie(id: string) {
-    setSelectedId(selectedId === id ? null : id);
+    setSelectedId(id);
   }
 
   function handleCloseMovie() {
@@ -56,7 +54,10 @@ function App() {
         </Box>
         <Box>
           {selectedId ? (
-            <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} />
+            <MovieDetails
+              selectedId={selectedId}
+              onCloseMovie={handleCloseMovie}
+            />
           ) : (
             <>
               <WatchedSummary watched={watched} />

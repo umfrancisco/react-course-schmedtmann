@@ -6,9 +6,13 @@ const average = (arr: number[]) =>
   arr.reduce((acc, cur) => acc + cur / arr.length, 0);
 
 function WatchedSummary({ watched }: Props) {
-  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
+  const avgImdbRating = average(
+    watched.map((movie) => Number(movie.imdbRating))
+  );
   const avgUserRating = average(watched.map((movie) => movie.userRating));
-  const avgRuntime = average(watched.map((movie) => movie.runtime));
+  const avgRuntime = average(
+    watched.map((movie) => Number(movie.Runtime.split(" ")[0]))
+  );
 
   return (
     <div className="summary">
