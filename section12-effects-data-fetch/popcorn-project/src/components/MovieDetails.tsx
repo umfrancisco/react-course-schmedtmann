@@ -21,6 +21,11 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
       .then((data) => setMovie(data));
   }, [selectedId]);
 
+  useEffect(() => {
+    if (!movie) return;
+    document.title = "Movie | "+movie?.Title;
+  }, [movie]);
+
   function handleAdd() {
     if (movie && userRating) {
       onAddWatched({
