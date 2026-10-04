@@ -5,16 +5,36 @@ import Loader from "./Loader";
 type Props = {
   selectedId: string | null;
   onCloseMovie: () => void;
+  onAddWatched: (movie: Watched) => void;
+  watched: Watched[];
 };
 
-function MovieDetails({ selectedId, onCloseMovie }: Props) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props) {
   const [movie, setMovie] = useState<Movie | undefined>();
+  const [userRating, setUserRating] = useState<number | undefined>();
+  const isWatched = selectedId && watched.map(movie => movie.imdbID).includes(selectedId);
+  const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating;
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_KEY}&i=${selectedId}`)
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, [selectedId]);
+
+  function handleAdd() {
+    if (movie && userRating) {
+      onAddWatched({
+        imdbID: movie.imdbID,
+        title: movie.Title,
+        year: movie.Year,
+        poster: movie.Poster,
+        runtime: Number(movie.Runtime?.split(" ")[0]),
+        imdbRating: Number(movie.imdbRating),
+        userRating: userRating
+      })
+      onCloseMovie();
+    }
+  }
 
   if (movie) {
     return (
@@ -38,7 +58,14 @@ function MovieDetails({ selectedId, onCloseMovie }: Props) {
         </header>
         <section>
           <div className="rating">
-            <StarRating maxRating={10} size={24} />
+            {(isWatched) ? (
+              <p>You rated this movie: {watchedUserRating} stars</p>
+            ) : (
+              <>
+                <StarRating maxRating={10} size={24} onUserRating={setUserRating} />
+                {userRating && <button className="btn-add" onClick={handleAdd}>+ Add to list</button>}
+              </>
+            )}
           </div>
           <p>
             <em>{movie.Plot}</em>

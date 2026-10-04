@@ -16,7 +16,7 @@ type Props = {
   size?: number;
   messages?: string[];
   defaultRating?: number;
-  onMovieRating?: (rating: number) => void;
+  onUserRating?: (rating: number) => void;
 };
 
 function StarRating({
@@ -25,7 +25,7 @@ function StarRating({
   size = 48,
   messages = [],
   defaultRating = 0,
-  onMovieRating,
+  onUserRating,
 }: Props) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
@@ -39,8 +39,8 @@ function StarRating({
 
   function handleRating(rating: number) {
     setRating(rating);
-    if (onMovieRating) {
-      onMovieRating(rating);
+    if (onUserRating) {
+      onUserRating(rating);
     }
   }
 

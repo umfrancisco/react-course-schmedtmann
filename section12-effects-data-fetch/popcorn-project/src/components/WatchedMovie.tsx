@@ -1,8 +1,9 @@
 type Props = {
   movie: Watched;
+  onDeleteWatched: (id: string) => void;
 };
 
-function WatchedMovie({ movie }: Props) {
+function WatchedMovie({ movie, onDeleteWatched }: Props) {
   return (
     <li key={movie.imdbID}>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -21,6 +22,7 @@ function WatchedMovie({ movie }: Props) {
           <span>{movie.runtime} min</span>
         </p>
       </div>
+      <button onClick={() => onDeleteWatched(movie.imdbID)} className="btn-delete">X</button>
     </li>
   );
 }

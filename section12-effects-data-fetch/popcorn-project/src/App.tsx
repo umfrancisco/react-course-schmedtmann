@@ -17,7 +17,7 @@ function App() {
   const [watched, setWatched] = useState<Watched[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error>();
-  const [query, setQuery] = useState("hamlet");
+  const [query, setQuery] = useState("batman");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -35,6 +35,14 @@ function App() {
 
   function handleCloseMovie() {
     setSelectedId(null);
+  }
+
+  function handleAddWatched(movie: Watched) {
+    setWatched(watched => [...watched, movie]);
+  }
+
+  function handleDeleteWatched(id: string) {
+    setWatched(watched => watched.filter(movie => movie.imdbID !== id));
   }
 
   return (
@@ -57,11 +65,13 @@ function App() {
             <MovieDetails
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
+              watched={watched}
             />
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedList watched={watched} />
+              <WatchedList watched={watched} onDeleteWatched={handleDeleteWatched} />
             </>
           )}
         </Box>
