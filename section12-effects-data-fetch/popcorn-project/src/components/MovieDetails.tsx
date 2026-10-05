@@ -32,6 +32,10 @@ function MovieDetails({
   useEffect(() => {
     if (!movie) return;
     document.title = "Movie | " + movie?.Title;
+
+    return () => {
+      document.title = "Popcorn Project";
+    }
   }, [movie]);
 
   function handleAdd() {
