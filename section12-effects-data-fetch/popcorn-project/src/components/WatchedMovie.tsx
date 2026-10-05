@@ -22,7 +22,12 @@ function WatchedMovie({ movie, onDeleteWatched }: Props) {
           <span>{movie.runtime} min</span>
         </p>
       </div>
-      <button onClick={() => onDeleteWatched(movie.imdbID)} className="btn-delete">X</button>
+      <button
+        onClick={() => onDeleteWatched(movie.imdbID)}
+        className="btn-delete"
+      >
+        X
+      </button>
     </li>
   );
 }

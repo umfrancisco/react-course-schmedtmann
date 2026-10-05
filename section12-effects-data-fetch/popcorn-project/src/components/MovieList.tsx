@@ -6,13 +6,15 @@ type Props = {
 };
 
 function MovieList({ movies, onSelectMovie }: Props) {
+  const sorted = movies?.sort((a, b) => Number(b.Year) - Number(a.Year));
+
   if (!movies) {
     return <p className="error">No movies found...</p>;
   }
 
   return (
     <ul className="list list-movies">
-      {movies?.map((movie) => (
+      {sorted?.map((movie) => (
         <Movie key={movie.imdbID} movie={movie} onSelectMovie={onSelectMovie} />
       ))}
     </ul>

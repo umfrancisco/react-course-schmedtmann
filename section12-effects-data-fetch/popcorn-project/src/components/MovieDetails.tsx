@@ -9,11 +9,19 @@ type Props = {
   watched: Watched[];
 };
 
-function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props) {
+function MovieDetails({
+  selectedId,
+  onCloseMovie,
+  onAddWatched,
+  watched,
+}: Props) {
   const [movie, setMovie] = useState<Movie | undefined>();
   const [userRating, setUserRating] = useState<number | undefined>();
-  const isWatched = selectedId && watched.map(movie => movie.imdbID).includes(selectedId);
-  const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating;
+  const isWatched =
+    selectedId && watched.map((movie) => movie.imdbID).includes(selectedId);
+  const watchedUserRating = watched.find(
+    (movie) => movie.imdbID === selectedId
+  )?.userRating;
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_KEY}&i=${selectedId}`)
@@ -23,7 +31,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
 
   useEffect(() => {
     if (!movie) return;
-    document.title = "Movie | "+movie?.Title;
+    document.title = "Movie | " + movie?.Title;
   }, [movie]);
 
   function handleAdd() {
@@ -35,8 +43,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
         poster: movie.Poster,
         runtime: Number(movie.Runtime?.split(" ")[0]),
         imdbRating: Number(movie.imdbRating),
-        userRating: userRating
-      })
+        userRating: userRating,
+      });
       onCloseMovie();
     }
   }
@@ -63,12 +71,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
         </header>
         <section>
           <div className="rating">
-            {(isWatched) ? (
+            {isWatched ? (
               <p>You rated this movie: {watchedUserRating} stars</p>
             ) : (
               <>
-                <StarRating maxRating={10} size={24} onUserRating={setUserRating} />
-                {userRating && <button className="btn-add" onClick={handleAdd}>+ Add to list</button>}
+                <StarRating
+                  maxRating={10}
+                  size={24}
+                  onUserRating={setUserRating}
+                />
+                {userRating && (
+                  <button className="btn-add" onClick={handleAdd}>
+                    + Add to list
+                  </button>
+                )}
               </>
             )}
           </div>

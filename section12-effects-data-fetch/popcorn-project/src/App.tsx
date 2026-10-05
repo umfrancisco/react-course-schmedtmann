@@ -38,11 +38,11 @@ function App() {
   }
 
   function handleAddWatched(movie: Watched) {
-    setWatched(watched => [...watched, movie]);
+    setWatched((watched) => [...watched, movie]);
   }
 
   function handleDeleteWatched(id: string) {
-    setWatched(watched => watched.filter(movie => movie.imdbID !== id));
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
   return (
@@ -71,7 +71,10 @@ function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedList watched={watched} onDeleteWatched={handleDeleteWatched} />
+              <WatchedList
+                watched={watched}
+                onDeleteWatched={handleDeleteWatched}
+              />
             </>
           )}
         </Box>
