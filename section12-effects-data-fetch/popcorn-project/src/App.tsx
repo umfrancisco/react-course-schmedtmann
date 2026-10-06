@@ -16,17 +16,32 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [watched, setWatched] = useState<Watched[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<Error>();
+  const [error, setError] = useState<string>();
   const [query, setQuery] = useState("batman");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     setIsLoading(true);
-    fetch(`${import.meta.env.VITE_API_KEY}&s=${query}`)
+    fetch(`${import.meta.env.VITE_API_KEY}&s=${query}`, {
+      signal: controller.signal,
+    })
       .then((res) => res.json())
-      .then((data) => setMovies(data.Search))
-      .catch((err) => setError(err))
+      .then((data) => {
+        setMovies(data.Search);
+        setError("");
+      })
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          setError(err.message);
+        }
+      })
       .finally(() => setIsLoading(false));
+
+    return () => {
+      controller.abort();
+    };
   }, [query]);
 
   function handleSelectMovie(id: string) {

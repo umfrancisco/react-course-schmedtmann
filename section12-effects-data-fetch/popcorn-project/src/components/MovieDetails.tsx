@@ -35,7 +35,7 @@ function MovieDetails({
 
     return () => {
       document.title = "Popcorn Project";
-    }
+    };
   }, [movie]);
 
   function handleAdd() {
