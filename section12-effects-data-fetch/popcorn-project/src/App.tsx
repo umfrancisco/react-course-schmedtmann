@@ -17,7 +17,7 @@ function App() {
   const [watched, setWatched] = useState<Watched[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>();
-  const [query, setQuery] = useState("batman");
+  const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
       <Main>
         <Box>
           {!isLoading && !error && (
-            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} query={query} />
           )}
           {isLoading && <Loader />}
           {error && <ErrorMessage error={error} />}
@@ -86,10 +86,7 @@ function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedList
-                watched={watched}
-                onDeleteWatched={handleDeleteWatched}
-              />
+              <WatchedList watched={watched} onDeleteWatched={handleDeleteWatched} />
             </>
           )}
         </Box>
