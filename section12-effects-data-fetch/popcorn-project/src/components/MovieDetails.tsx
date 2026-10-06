@@ -9,12 +9,7 @@ type Props = {
   watched: Watched[];
 };
 
-function MovieDetails({
-  selectedId,
-  onCloseMovie,
-  onAddWatched,
-  watched,
-}: Props) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props) {
   const [movie, setMovie] = useState<Movie | undefined>();
   const [userRating, setUserRating] = useState<number | undefined>();
   const isWatched =
@@ -29,6 +24,7 @@ function MovieDetails({
       .then((data) => setMovie(data));
   }, [selectedId]);
 
+
   useEffect(() => {
     if (!movie) return;
     document.title = "Movie | " + movie?.Title;
@@ -37,6 +33,21 @@ function MovieDetails({
       document.title = "Popcorn Project";
     };
   }, [movie]);
+
+  useEffect(() => {
+    const callback = (e: KeyboardEvent) => {
+      console.log(e);
+      if (e.code === "Escape") {
+        onCloseMovie();
+      }
+    };
+    
+    document.addEventListener("keydown", callback);
+
+    return () => {
+      document.removeEventListener("keydown", callback);
+    }
+  }, [onCloseMovie]);
 
   function handleAdd() {
     if (movie && userRating) {
