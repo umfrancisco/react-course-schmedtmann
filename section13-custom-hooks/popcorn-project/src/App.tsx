@@ -14,7 +14,7 @@ import MovieDetails from "./components/MovieDetails.tsx";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [watched, setWatched] = useState<Watched[]>([]);
+  const [watched, setWatched] = useState<Watched[]>(() => JSON.parse(localStorage.watched));
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>();
   const [query, setQuery] = useState("");
@@ -57,6 +57,10 @@ function App() {
   function handleDeleteWatched(id: string) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   return (
     <>
