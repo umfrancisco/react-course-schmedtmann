@@ -20,4 +20,5 @@ declare type Watched = {
   runtime: number;
   imdbRating: number;
   userRating: number;
+  countRating: number;
 };

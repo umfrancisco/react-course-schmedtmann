@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 
@@ -17,6 +17,14 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+
+  const countRef = useRef(0);
+  console.log(countRef.current);
+  useEffect(() => {
+    if (userRating) {
+      countRef.current++;
+    }
+  }, [userRating]);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_KEY}&i=${selectedId}`)
@@ -59,6 +67,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
         runtime: Number(movie.Runtime?.split(" ")[0]),
         imdbRating: Number(movie.imdbRating),
         userRating: userRating,
+        countRating: countRef.current,
       });
       onCloseMovie();
     }
