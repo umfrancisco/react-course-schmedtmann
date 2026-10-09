@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
+import { useKey } from "../services/api";
 
 type Props = {
   selectedId: string | null;
@@ -17,9 +18,10 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+  useKey("Escape", onCloseMovie);
 
   const countRef = useRef(0);
-  console.log(countRef.current);
+  
   useEffect(() => {
     if (userRating) {
       countRef.current++;
@@ -41,21 +43,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }: Props
       document.title = "Popcorn Project";
     };
   }, [movie]);
-
-  useEffect(() => {
-    const callback = (e: KeyboardEvent) => {
-      console.log(e);
-      if (e.code === "Escape") {
-        onCloseMovie();
-      }
-    };
-    
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    }
-  }, [onCloseMovie]);
 
   function handleAdd() {
     if (movie && userRating) {

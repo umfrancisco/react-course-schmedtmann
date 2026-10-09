@@ -16,8 +16,8 @@ import { useLocalStorageState, useMovies } from "./services/api.ts";
 function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const { movies, isLoading, error } = useMovies(query);
   const [watched, setWatched] = useLocalStorageState<Watched[]>("watched");
+  const { movies, isLoading, error } = useMovies(query);
 
   function handleSelectMovie(id: string) {
     setSelectedId(id);
