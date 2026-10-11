@@ -1,26 +1,42 @@
-import { useState, type ChangeEvent } from "react";
+import { useReducer, useState, type ChangeEvent } from "react";
+
+type PayloadAction = {
+  type: string;
+  payload: number;
+}
+
+function reducer(state: number, action: PayloadAction) {
+  console.log(state, action);
+  if (action.type === "inc") {
+    return state + action.payload;
+  }
+  if (action.type === "dec") {
+    return state - action.payload;
+  }
+  if (action.type === "setCount") {
+    return action.payload;
+  }
+  return state;
+}
 
 function DateCounter() {
-  const [count, setCount] = useState(0);
+  const [count, dispatch] = useReducer(reducer, 0);
   const [step, setStep] = useState(1);
 
-  // This mutates the date object.
   const date = new Date("june 21 2027");
   date.setDate(date.getDate() + count);
 
   const dec = () => {
-    // setCount((count) => count - 1);
-    setCount((count) => count - step);
+    dispatch({ type: "dec", payload: 1 });
   };
 
   const inc = () => {
-    // setCount((count) => count + 1);
-    setCount((count) => count + step);
+    dispatch({ type: "inc", payload: 1 });
   };
 
   const defineCount = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value).toString() !== "NaN") {
-      setCount(Number(e.target.value));
+      dispatch({ type: "setCount", payload: Number(e.target.value) });
     }
   };
 
@@ -29,7 +45,7 @@ function DateCounter() {
   };
 
   const reset = () => {
-    setCount(0);
+    // setCount(0);
     setStep(1);
   };
 
