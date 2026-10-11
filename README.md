@@ -105,7 +105,7 @@ Through the exercises and projects in this repository, I aim to:
 - Basic knowledge of JavaScript.
 - A code editor, such as [Visual Studio Code](https://code.visualstudio.com/).
 
-## 📖 Learning Resources
+## Learning Resources
 
 - [React Documentation](https://react.dev/)
 - [Next.js Documentation](https://nextjs.org/docs)
@@ -116,7 +116,7 @@ Through the exercises and projects in this repository, I aim to:
 - [Supabase Documentation](https://supabase.com/docs)
 - [Vite Documentation](https://vite.dev/)
 
-## 📝 About This Repository
+## About This Repository
 
 This is an **educational repository** containing exercises and projects developed while following a Udemy course on React and Next.js. The implementations are intended to reinforce the concepts presented in the lessons and provide practical experience with modern frontend development.
 
