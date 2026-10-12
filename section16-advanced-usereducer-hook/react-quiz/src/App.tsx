@@ -29,8 +29,6 @@ function App() {
       .catch(() => dispatch({ type: ActionType.FAILED }));
   }, []);
 
-  console.log(state);
-
   return (
     <div className="app">
       <Header />
