@@ -1,15 +1,5 @@
 import { useReducer, type ChangeEvent } from "react";
 
-type State = {
-  count: number;
-  step: number;
-}
-
-type Action = {
-  type: string;
-  payload?: number;
-}
-
 const initialState: State = { count: 0, step: 1 };
 
 function reducer(state: State, action: Action) {
