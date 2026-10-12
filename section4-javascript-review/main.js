@@ -145,7 +145,6 @@ function getBook(id) {
 
 // arrays, objects
 
-/*
 const book = getBook(3)
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book
 
@@ -202,11 +201,11 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book))
-*/
+
 
 // map, filter, reduce, sort
 
-/*
+
 const books = getBooks()
 
 function getTotalReviewCount(book) {
@@ -272,23 +271,22 @@ const booksAfterUpdating = booksAfterAdding.slice()
   .map(book => book.id === 6 ? { ...book, title: "The C Programming Language" } : book)
   .map(book => book.title)
 console.log(booksAfterUpdating)
-*/
+
 
 // promises
 
-/*
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then(res => res.json())
-  .then(data => console.log(data))
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then(res => res.json())
+//   .then(data => console.log(data))
 
-console.log("hello")
-*/
+// console.log("hello")
 
-async function getTodos() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos")
-  const data = await res.json()
-  return data
-}
 
-const todos = getTodos()
-console.log(todos)
+// async function getTodos() {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+//   const data = await res.json()
+//   return data
+// }
+
+// const todos = getTodos()
+// console.log(todos)
