@@ -3,17 +3,22 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
-import { ActionType, Status } from "./constants";
+import { ActionType, initialState, Status, type QuestionPayloadAction } from "./constants";
 import StartScreen from "./components/StartScreen";
+import Question from "./components/Question";
 
-const initialState: QuestionState = { questions: [], status: Status.LOADING };
-
-function reducer(state: QuestionState, action: QuestionPayloadAction) {
+function reducer(state: QuestionState, action: QuestionPayloadAction): QuestionState {
   if (action.type === ActionType.RECEIVED) {
-    return { questions: action.payload, status: Status.READY };
+    return { ...state, questions: action.payload, status: Status.READY };
   }
   if (action.type === ActionType.FAILED) {
     return { ...state, status: Status.ERROR };
+  }
+  if (action.type === ActionType.START) {
+    return { ...state, status: Status.ACTIVE };
+  }
+  if (action.type === ActionType.ANSWER) {
+    return { ...state, answer: action.payload };
   }
   return state;
 }
@@ -35,7 +40,8 @@ function App() {
       <Main>
         {state.status === Status.LOADING && <Loader />}
         {state.status === Status.ERROR && <Error />}
-        {state.status === Status.READY && numberQuestions && <StartScreen numberQuestions={numberQuestions} />}
+        {state.status === Status.READY && numberQuestions && <StartScreen numberQuestions={numberQuestions} dispatch={dispatch} />}
+        {state.status === Status.ACTIVE && state.questions && <Question question={state.questions[state.index]} />}
       </Main>
     </div>
   );

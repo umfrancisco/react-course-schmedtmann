@@ -1,8 +1,18 @@
 import { useReducer, type ChangeEvent } from "react";
 
-const initialState: State = { count: 0, step: 1 };
+const initialState: CountState = { count: 0, step: 1 };
 
-function reducer(state: State, action: Action) {
+type CountState = {
+  count: number;
+  step: number;
+};
+
+type CountAction = {
+  type: string;
+  payload?: number;
+};
+
+function reducer(state: CountState, action: CountAction) {
   if (action.type === "inc") {
     return { ...state, count: state.count + state.step };
   }

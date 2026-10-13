@@ -1,21 +1,8 @@
-declare type State = {
-  count: number;
-  step: number;
-};
-
-declare type Action = {
-  type: string;
-  payload?: number;
-};
-
 declare type QuestionState = {
   questions: Question[] | undefined;
   status: string;
-};
-
-declare type QuestionPayloadAction = {
-  type: string;
-  payload?: Question[] | undefined;
+  index: number;
+  answer: number | null;
 };
 
 declare type Question = {
