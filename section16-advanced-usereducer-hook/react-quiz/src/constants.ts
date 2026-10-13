@@ -16,7 +16,8 @@ export const initialState: QuestionState = {
   questions: [],
   status: Status.LOADING,
   index: 0,
-  answer: null
+  answer: null,
+  points: 0
 };
 
 export type QuestionPayloadAction = {

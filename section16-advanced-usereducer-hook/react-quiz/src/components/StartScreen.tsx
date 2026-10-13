@@ -1,5 +1,5 @@
 import type { ActionDispatch } from "react";
-import { ActionType } from "../constants";
+import { ActionType, type QuestionPayloadAction } from "../constants";
 
 type Props = {
   numberQuestions: number;

@@ -3,6 +3,7 @@ declare type QuestionState = {
   status: string;
   index: number;
   answer: number | null;
+  points: number;
 };
 
 declare type Question = {

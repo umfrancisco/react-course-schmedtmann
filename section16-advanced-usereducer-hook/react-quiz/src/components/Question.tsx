@@ -1,15 +1,19 @@
+import type { ActionDispatch } from "react";
 import Options from "./Options";
+import type { QuestionPayloadAction } from "../constants";
 
 type Props = {
   question: Question;
+  dispatch: ActionDispatch<[action: QuestionPayloadAction]>;
+  answer: number | null;
 };
 
-function Question({ question }: Props) {
+function Question({ question, dispatch, answer }: Props) {
 
   return (
     <div>
       <h4>{question.question}</h4>
-      <Options options={question.options} />
+      <Options question={question} dispatch={dispatch} answer={answer} />
     </div>
   );
 }

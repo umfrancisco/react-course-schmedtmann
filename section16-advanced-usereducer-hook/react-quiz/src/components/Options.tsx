@@ -1,15 +1,28 @@
+import type { ActionDispatch } from "react";
+import { ActionType, type QuestionPayloadAction } from "../constants";
 
 type Props = {
-  options: string[];
+  question: Question;
+  dispatch: ActionDispatch<[action: QuestionPayloadAction]>;
+  answer: number | null;
 }
 
-function Options({ options }: Props) {
+function Options({ question, dispatch, answer }: Props) {
 
   return (
     <div className="options">
-      {options.map(option => (
-        <button key={option} className="btn btn-option">{option}</button>
-      ))}
+      {question.options.map((option, index) => {
+        const validAnswer = (answer !== null);
+        const correctAnswer = (index === question.correctOption);
+        const classForButton = `btn btn-option ${index === answer ? "answer" : ""} ${validAnswer ? `${correctAnswer ? "correct" : "wrong"}` : ""}`;
+        const handleDispatch = () => dispatch({ type: ActionType.ANSWER, payload: index });
+
+        return (
+          <button key={option} className={classForButton} disabled={validAnswer} onClick={handleDispatch}>
+            {option}
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -17,8 +17,9 @@ function reducer(state: QuestionState, action: QuestionPayloadAction): QuestionS
   if (action.type === ActionType.START) {
     return { ...state, status: Status.ACTIVE };
   }
-  if (action.type === ActionType.ANSWER) {
-    return { ...state, answer: action.payload };
+  if (state.questions && action.type === ActionType.ANSWER) {
+    const question = state.questions.at(state.index);
+    return { ...state, answer: action.payload, points: action.payload === question?.correctOption ? state.points + question.points : state.points };
   }
   return state;
 }
@@ -33,6 +34,8 @@ function App() {
       .then(data => dispatch({ type: ActionType.RECEIVED, payload: data }))
       .catch(() => dispatch({ type: ActionType.FAILED }));
   }, []);
+  
+  console.log(state);
 
   return (
     <div className="app">
@@ -41,7 +44,9 @@ function App() {
         {state.status === Status.LOADING && <Loader />}
         {state.status === Status.ERROR && <Error />}
         {state.status === Status.READY && numberQuestions && <StartScreen numberQuestions={numberQuestions} dispatch={dispatch} />}
-        {state.status === Status.ACTIVE && state.questions && <Question question={state.questions[state.index]} />}
+        {state.status === Status.ACTIVE && state.questions && (
+          <Question question={state.questions[state.index]} dispatch={dispatch} answer={state.answer} />
+        )}
       </Main>
     </div>
   );
