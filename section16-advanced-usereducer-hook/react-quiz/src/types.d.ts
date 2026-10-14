@@ -4,6 +4,7 @@ declare type QuestionState = {
   index: number;
   answer: number | null;
   points: number;
+  highscore: number;
 };
 
 declare type Question = {
