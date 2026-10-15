@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { ActionType, initialState, Status, type QuestionPayloadAction } from "./constants";
+import { Action, initialState, Status, type PayloadAction } from "./constants";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
@@ -10,26 +10,29 @@ import NextButton from "./components/NextButton";
 import Progress from "./components/Progress";
 import FinishScreen from "./components/FinishScreen";
 
-function reducer(state: QuestionState, action: QuestionPayloadAction): QuestionState {
-  if (action.type === ActionType.RECEIVED) {
+function reducer(state: State, action: PayloadAction): State {
+  if (action.type === Action.RECEIVED) {
     return { ...state, questions: action.payload, status: Status.READY };
   }
-  if (action.type === ActionType.FAILED) {
+  if (action.type === Action.FAILED) {
     return { ...state, status: Status.ERROR };
   }
-  if (action.type === ActionType.START) {
+  if (action.type === Action.START) {
     return { ...state, status: Status.ACTIVE };
   }
-  if (action.type === ActionType.ANSWER) {
+  if (action.type === Action.ANSWER) {
     const question = state.questions?.at(state.index);
     return { ...state, answer: action.payload, points: action.payload === question?.correctOption ? state.points + question.points : state.points };
   }
-  if (action.type === ActionType.NEXT_QUESTION) {
+  if (action.type === Action.NEXT_QUESTION) {
     return { ...state, answer: null, index: state.index + 1 };
   }
-  if (action.type === ActionType.FINISH) {
+  if (action.type === Action.FINISH) {
     const highscore = state.points > state.highscore ? state.points : state.highscore;
     return { ...state, status: Status.FINISHED, highscore: highscore };
+  }
+  if (action.type === Action.RESET) {
+    return { ...state, status: Status.READY, points: 0, index: 0, answer: null };
   }
   return state;
 }
@@ -42,8 +45,8 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000/questions")
       .then(res => res.json())
-      .then(data => dispatch({ type: ActionType.RECEIVED, payload: data }))
-      .catch(() => dispatch({ type: ActionType.FAILED }));
+      .then(data => dispatch({ type: Action.RECEIVED, payload: data }))
+      .catch(() => dispatch({ type: Action.FAILED }));
   }, []);
   
   console.log(state);
@@ -62,7 +65,7 @@ function App() {
             <NextButton dispatch={dispatch} answer={state.answer} index={state.index} numberQuestions={numberQuestions} />
           </>
         )}
-        {state.status === Status.FINISHED && <FinishScreen points={state.points} maxPoints={maxPoints} highscore={state.highscore} />}
+        {state.status === Status.FINISHED && <FinishScreen points={state.points} maxPoints={maxPoints} highscore={state.highscore} dispatch={dispatch} />}
       </Main>
     </div>
   );

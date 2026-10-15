@@ -1,10 +1,10 @@
 import type { ActionDispatch } from "react";
 import Options from "./Options";
-import type { QuestionPayloadAction } from "../constants";
+import type { PayloadAction } from "../constants";
 
 type Props = {
   question: Question;
-  dispatch: ActionDispatch<[action: QuestionPayloadAction]>;
+  dispatch: ActionDispatch<[action: PayloadAction]>;
   answer: number | null;
 };
 

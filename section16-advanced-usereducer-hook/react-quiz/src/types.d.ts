@@ -1,4 +1,4 @@
-declare type QuestionState = {
+declare type State = {
   questions: Question[] | undefined;
   status: string;
   index: number;

@@ -6,16 +6,17 @@ export const Status = {
   FINISHED: "finished"
 } as const;
 
-export const ActionType = {
+export const Action = {
   RECEIVED: "received",
   FAILED: "failed",
   START: "start",
   ANSWER: "answer",
   NEXT_QUESTION: "question",
-  FINISH: "finish"
+  FINISH: "finish",
+  RESET: "reset"
 } as const;
 
-export const initialState: QuestionState = {
+export const initialState: State = {
   questions: [],
   status: Status.LOADING,
   index: 0,
@@ -24,16 +25,18 @@ export const initialState: QuestionState = {
   highscore: 0
 };
 
-export type QuestionPayloadAction = {
-  type: typeof ActionType.RECEIVED, payload: Question[];
+export type PayloadAction = {
+  type: typeof Action.RECEIVED, payload: Question[];
 } | {
-  type: typeof ActionType.FAILED;
+  type: typeof Action.FAILED;
 } | {
-  type: typeof ActionType.START;
+  type: typeof Action.START;
 } | {
-  type: typeof ActionType.ANSWER, payload: number;
+  type: typeof Action.ANSWER, payload: number;
 } | {
-  type: typeof ActionType.NEXT_QUESTION;
+  type: typeof Action.NEXT_QUESTION;
 } | {
-  type: typeof ActionType.FINISH;
+  type: typeof Action.FINISH;
+} | {
+  type: typeof Action.RESET;
 };
