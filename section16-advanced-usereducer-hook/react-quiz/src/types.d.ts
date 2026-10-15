@@ -5,6 +5,7 @@ declare type State = {
   answer: number | null;
   points: number;
   highscore: number;
+  secondsRemaining: number;
 };
 
 declare type Question = {

@@ -3,7 +3,7 @@ export const Status = {
   READY: "ready",
   ERROR: "error",
   ACTIVE: "active",
-  FINISHED: "finished"
+  FINISHED: "finished",
 } as const;
 
 export const Action = {
@@ -13,7 +13,8 @@ export const Action = {
   ANSWER: "answer",
   NEXT_QUESTION: "question",
   FINISH: "finish",
-  RESET: "reset"
+  RESET: "reset",
+  TIMER: "timer",
 } as const;
 
 export const initialState: State = {
@@ -22,7 +23,8 @@ export const initialState: State = {
   index: 0,
   answer: null,
   points: 0,
-  highscore: 0
+  highscore: 0,
+  secondsRemaining: 0,
 };
 
 export type PayloadAction = {
@@ -39,4 +41,6 @@ export type PayloadAction = {
   type: typeof Action.FINISH;
 } | {
   type: typeof Action.RESET;
+} | {
+  type: typeof Action.TIMER;
 };

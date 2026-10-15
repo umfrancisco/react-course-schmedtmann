@@ -14,7 +14,7 @@ function FinishScreen({ points, maxPoints, highscore, dispatch }: Props) {
   return (
     <>
       <p className="result">
-        You scored <strong>{points}</strong> out of {maxPoints} {percentage && Math.ceil(percentage)}%
+        You scored <strong>{points}</strong> out of {maxPoints} ({percentage && Math.ceil(percentage)}%)
       </p>
       <p className="highscore">(Highscore: {highscore} points)</p>
       <button className="btn btn-ui" onClick={() => dispatch({ type: Action.RESET })}>Reset</button>
