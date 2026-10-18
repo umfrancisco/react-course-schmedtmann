@@ -1,10 +1,12 @@
 // Uses the same styles as Product
+import PageNav from "../components/PageNav";
 import styles from "./Product.module.css";
 
 function Pricing() {
   return (
     <main className={styles.product}>
-      <section>
+      <PageNav />
+      <section className={styles.section}>
         <div>
           <h2>
             Simple pricing.
