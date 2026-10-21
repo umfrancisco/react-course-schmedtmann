@@ -11,3 +11,8 @@ declare type City = {
   }
   id: string;
 }
+
+declare type Country = {
+  country: string;
+  emoji: string;
+}

@@ -10,15 +10,11 @@ type Props = {
 
 function CityList({ cities, isLoading }: Props) {
   if (isLoading || !cities) {
-    return (
-      <Spinner />
-    );
+    return <Spinner />;
   }
 
   if (!cities.length) {
-    return (
-      <Message message="Add your first city by clicking on a city on the map" />
-    );
+    return <Message message="Add your first city by clicking on a city on the map" />;
   }
 
   return (

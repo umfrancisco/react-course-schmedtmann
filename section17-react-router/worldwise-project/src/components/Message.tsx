@@ -7,7 +7,7 @@ type Props = {
 function Message({ message }: Props) {
   return (
     <p className={styles.message}>
-      <span role="img">👋</span> {message}
+      {message}
     </p>
   );
 }
