@@ -6,37 +6,30 @@ import Footer from "./components/Footer";
 import { createRandomPost } from "./services/api";
 
 function App() {
-  const [posts, setPosts] = useState<Post[]>(() =>
-    Array.from({ length: 30 }, () => createRandomPost())
-  );
+  const [posts, setPosts] = useState<Post[]>(() => Array.from({ length: 30 }, () => createRandomPost()));
   const [searchQuery, setSearchQuery] = useState("");
   const [isFakeDark, setIsFakeDark] = useState(false);
+  
+  const searchPosts = (posts: Post[]) => {
+    return posts.filter(post => `${post.title} ${post.body}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+    );
+  }
 
-  // Derived state. These are the posts that will actually be displayed
-  const searchedPosts =
-    searchQuery.length > 0
-      ? posts.filter((post) =>
-        `${post.title} ${post.body}`
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase())
-      )
-      : posts;
-
-  function handleAddPost(post: Post) {
+  const searchedPosts = searchQuery.length > 0 ? searchPosts(posts) : posts;
+  
+  const handleAddPost = (post: Post) => {
     setPosts((posts) => [post, ...posts]);
   }
 
-  function handleClearPosts() {
+  const handleClearPosts = () => {
     setPosts([]);
   }
 
-  // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
-  useEffect(
-    function () {
-      document.documentElement.classList.toggle("fake-dark-mode");
-    },
-    [isFakeDark]
-  );
+  useEffect(() => {
+    document.documentElement.classList.toggle("fake-dark-mode");
+  }, [isFakeDark]);
 
   return (
     <section>
