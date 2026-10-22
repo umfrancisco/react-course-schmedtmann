@@ -4,10 +4,10 @@ import Message from "./Message";
 import Spinner from "./Spinner";
 
 const unique = (countries: Country[]) => {
-  let n = countries.length;
-  let uniqueCountries: Country[] = [];
+  const n = countries.length;
+  const uniqueCountries: Country[] = [];
   for (let i = 0; i < n; i++) {
-    let existing = isExisting(uniqueCountries, countries[i].country);
+    const existing = isExisting(uniqueCountries, countries[i].country);
     if (!existing) {
       uniqueCountries.push(countries[i]);
     }
@@ -16,7 +16,7 @@ const unique = (countries: Country[]) => {
 }
 
 const isExisting = (countries: Country[], country: string) => {
-  let n = countries.length;
+  const n = countries.length;
   for (let i = 0; i < n; i++) {
     if (country === countries[i].country) {
       return true;
@@ -43,7 +43,7 @@ function CountryList({ cities, isLoading }: Props) {
     return (
       <ul className={styles.countryList}>
         {unique(countries).map(country => (
-          <CountryItem country={country} />
+          <CountryItem country={country} key={country.country} />
         ))}
       </ul>
     );
