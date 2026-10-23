@@ -17,15 +17,15 @@ function App() {
     );
   }
 
-  const searchedPosts = searchQuery.length > 0 ? searchPosts(posts) : posts;
-  
   const handleAddPost = (post: Post) => {
-    setPosts((posts) => [post, ...posts]);
+    setPosts(posts => [post, ...posts]);
   }
 
   const handleClearPosts = () => {
     setPosts([]);
   }
+  
+  const searchedPosts = searchQuery.length > 0 ? searchPosts(posts) : posts;
 
   useEffect(() => {
     document.documentElement.classList.toggle("fake-dark-mode");
