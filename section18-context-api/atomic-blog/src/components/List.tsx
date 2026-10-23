@@ -1,9 +1,9 @@
+import { useContext } from "react";
+import { PostContext } from "../services/api";
 
-type Props = {
-  posts: Post[];
-}
+function List() {
+  const { posts } = useContext(PostContext);
 
-function List({ posts }: Props) {
   return (
     <ul>
       {posts.map((post, i) => (

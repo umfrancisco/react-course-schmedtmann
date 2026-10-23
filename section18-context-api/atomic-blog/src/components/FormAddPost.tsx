@@ -1,12 +1,10 @@
-import { useState, type SubmitEvent } from "react";
+import { useContext, useState, type SubmitEvent } from "react";
+import { PostContext } from "../services/api";
 
-type Props = {
-  onAddPost: (val: Post) => void; 
-}
-
-function FormAddPost({ onAddPost }: Props) {
+function FormAddPost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const { onAddPost } = useContext(PostContext);
 
   const handleSubmit = function (e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();

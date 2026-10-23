@@ -1,13 +1,9 @@
 import List from "./List";
 
-type Props = {
-  posts: Post[];
-}
-
-function Posts({ posts }: Props) {
+function Posts() {
   return (
     <section>
-      <List posts={posts} />
+      <List />
     </section>
   );
 }

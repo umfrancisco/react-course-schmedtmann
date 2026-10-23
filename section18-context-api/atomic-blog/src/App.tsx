@@ -41,16 +41,12 @@ function App() {
       setSearchQuery,
     }}>
       <section>
-        <button
-          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-          className="btn-fake-dark-mode"
-        >
+        <button onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)} className="btn-fake-dark-mode">
           {isFakeDark ? "☀️" : "🌙"}
         </button>
-
         <Header />
-        <Main posts={searchedPosts} onAddPost={handleAddPost} />
-        <Archive onAddPost={handleAddPost} />
+        <Main />
+        <Archive />
         <Footer />
       </section>
     </PostContext.Provider>
