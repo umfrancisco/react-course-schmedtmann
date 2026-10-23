@@ -1,10 +1,9 @@
+import { useContext } from "react";
+import { PostContext } from "../services/api";
 
-type Props = {
-  searchQuery: string;
-  setSearchQuery: (val: string) => void;
-}
+function SearchPosts() {
+  const { searchQuery, setSearchQuery } = useContext(PostContext);
 
-function SearchPosts({ searchQuery, setSearchQuery }: Props) {
   return (
     <input
       value={searchQuery}

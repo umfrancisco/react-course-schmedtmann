@@ -1,25 +1,19 @@
+import { useContext } from "react";
+import { PostContext } from "../services/api";
 import Results from "./Results";
 import SearchPosts from "./SearchPosts";
 
-type Props = {
-  posts: Post[];
-  onClearPosts: () => void;
-  searchQuery: string;
-  setSearchQuery: (val: string) => void;
-}
-
-function Header({ posts, onClearPosts, searchQuery, setSearchQuery }: Props) {
+function Header() {
+  const { onClearPosts } = useContext(PostContext);
+  
   return (
     <header>
       <h1>
         <span>⚛️</span>The Atomic Blog
       </h1>
       <div>
-        <Results posts={posts} />
-        <SearchPosts
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <Results />
+        <SearchPosts />
         <button onClick={onClearPosts}>Clear posts</button>
       </div>
     </header>

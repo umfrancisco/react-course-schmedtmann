@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { createContext } from "react";
 
 export function createRandomPost() {
   return {
@@ -6,3 +7,5 @@ export function createRandomPost() {
     body: faker.hacker.phrase(),
   };
 }
+
+export const PostContext = createContext<PostContextAPI>(null!);
