@@ -12,6 +12,13 @@ declare type City = {
   id: string;
 }
 
+declare type CityContextAPI = {
+  cities: City[];
+  setCities: (value: City[]) => void;
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
+}
+
 declare type Country = {
   country: string;
   emoji: string;

@@ -1,14 +1,12 @@
+import { useCitiesContext } from "../contexts/CitiesContextProvider";
 import CityItem from "./CityItem";
 import styles from "./CityList.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
-type Props = {
-  cities: City[] | undefined;
-  isLoading: boolean;
-}
+function CityList() {
+  const { cities, isLoading } = useCitiesContext();
 
-function CityList({ cities, isLoading }: Props) {
   if (isLoading || !cities) {
     return <Spinner />;
   }

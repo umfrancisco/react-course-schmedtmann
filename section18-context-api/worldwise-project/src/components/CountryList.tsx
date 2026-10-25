@@ -1,3 +1,4 @@
+import { useCitiesContext } from "../contexts/CitiesContextProvider";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import Message from "./Message";
@@ -25,12 +26,9 @@ const isExisting = (countries: Country[], country: string) => {
   return false;
 }
 
-type Props = {
-  cities: City[] | undefined;
-  isLoading: boolean;
-}
+function CountryList() {
+  const { cities, isLoading } = useCitiesContext();
 
-function CountryList({ cities, isLoading }: Props) {
   if (isLoading || !cities) {
     return <Spinner />;
   }
