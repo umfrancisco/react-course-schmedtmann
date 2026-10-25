@@ -3,7 +3,11 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 export const CitiesContext = createContext<CityContextAPI>(null!);
 
 export function useCitiesContext() {
-  return useContext(CitiesContext);
+  const context = useContext(CitiesContext);
+  if (context === null) {
+    throw new Error("CitiesContext was used outside the CitiesContextProvider");
+  }
+  return context;
 }
 
 type Props = {

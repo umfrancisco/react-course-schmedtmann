@@ -3,16 +3,15 @@ import City from "./components/City";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import Form from "./components/Form";
+import CitiesContextProvider from "./contexts/CitiesContextProvider";
 import AppLayout from "./pages/AppLayout";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Pricing from "./pages/Pricing";
 import Product from "./pages/Product";
-import CitiesContextProvider from "./contexts/CitiesContextProvider";
 
 function App() {
-
   return (
     <CitiesContextProvider>
       <BrowserRouter>
