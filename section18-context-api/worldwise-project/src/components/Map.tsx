@@ -2,8 +2,10 @@ import type { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import styles from "./Map.module.css";
 import { useCitiesContext } from "../contexts/CitiesContextProvider";
+import { useGeolocation } from "../hooks/useGeolocation";
+import styles from "./Map.module.css";
+import Button from "./Button";
 
 type Props = {
   position: LatLngExpression;
@@ -32,6 +34,7 @@ function Map() {
   const { cities } = useCitiesContext();
   const [searchParams] = useSearchParams();
   const [position, setPosition] = useState<LatLngExpression>([40, 10]);
+  const { isLoading: isLoadingPosition, position: geolocationPosition, getPosition } = useGeolocation(null);
   const lat = Number(searchParams.get("lat"));
   const lng = Number(searchParams.get("lng"));
 
@@ -41,9 +44,20 @@ function Map() {
     }
   }, [lat, lng]);
 
+  useEffect(() => {
+    if (geolocationPosition) {
+      setPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    }
+  }, [geolocationPosition]);
+
   return (
     <div className={styles.mapContainer}>
-      <MapContainer center={position} zoom={6} scrollWheelZoom={true} className={styles.map}>
+      {!geolocationPosition && (
+        <Button type="position" onClick={getPosition}>
+          {isLoadingPosition ? "Loading..." : "Use your position"}
+        </Button>
+      )}
+      <MapContainer center={position} zoom={8} scrollWheelZoom={true} className={styles.map}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"

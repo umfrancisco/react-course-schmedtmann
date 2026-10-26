@@ -12,6 +12,11 @@ declare type City = {
   id: string;
 }
 
+declare type Position = {
+  lat: number;
+  lng: number;
+}
+
 declare type CityContextAPI = {
   cities: City[];
   setCities: (value: City[]) => void;
