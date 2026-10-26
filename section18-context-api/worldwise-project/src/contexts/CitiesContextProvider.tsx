@@ -16,30 +16,35 @@ type Props = {
 
 function CitiesContextProvider({ children }: Props) {
   const [cities, setCities] = useState<City[]>([]);
+  const [currentCity, setCurrentCity] = useState<City>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchCities() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/cities`);
-        const data = await res.json();
-        setCities(data);
-      } catch {
-        console.log("ERROR");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchCities();
+    setIsLoading(true);
+    fetch(`${import.meta.env.VITE_API_URL}/cities`)
+      .then(res => res.json())
+      .then(data => setCities(data))
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
   }, []);
+
+  function getCity(id: string) {
+    setIsLoading(true);
+    fetch(`${import.meta.env.VITE_API_URL}/cities/${id}`)
+      .then(res => res.json())
+      .then(data => setCurrentCity(data))
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
+  }
 
   return (
     <CitiesContext.Provider value={{
       cities,
       setCities,
       isLoading,
-      setIsLoading
+      setIsLoading,
+      currentCity,
+      getCity
     }}>
       {children}
     </CitiesContext.Provider>

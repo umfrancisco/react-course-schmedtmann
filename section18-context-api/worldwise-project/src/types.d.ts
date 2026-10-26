@@ -17,6 +17,8 @@ declare type CityContextAPI = {
   setCities: (value: City[]) => void;
   isLoading: boolean;
   setIsLoading: (value: boolean) => void;
+  currentCity: City | undefined;
+  getCity: (id: string) => void;
 }
 
 declare type Country = {
