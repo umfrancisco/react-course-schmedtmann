@@ -6,6 +6,7 @@ import { useCitiesContext } from "../contexts/CitiesContextProvider";
 import { useGeolocation } from "../hooks/useGeolocation";
 import styles from "./Map.module.css";
 import Button from "./Button";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 
 type Props = {
   position: LatLngExpression;
@@ -31,12 +32,10 @@ function DetectClick() {
 }
 
 function Map() {
-  const { cities } = useCitiesContext();
-  const [searchParams] = useSearchParams();
   const [position, setPosition] = useState<LatLngExpression>([40, 10]);
+  const { cities } = useCitiesContext();
   const { isLoading: isLoadingPosition, position: geolocationPosition, getPosition } = useGeolocation(null);
-  const lat = Number(searchParams.get("lat"));
-  const lng = Number(searchParams.get("lng"));
+  const { lat, lng } = useUrlPosition();
 
   useEffect(() => {
     if (lat && lng) {
