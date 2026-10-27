@@ -11,7 +11,8 @@ import Box from "./components/Box.tsx";
 import Loader from "./components/Loader.tsx";
 import ErrorMessage from "./components/ErrorMessage.tsx";
 import MovieDetails from "./components/MovieDetails.tsx";
-import { useLocalStorageState, useMovies } from "./services/api.ts";
+import { useLocalStorageState } from "./hooks/useLocalStorageState.ts";
+import { useMovies } from "./hooks/useMovies.ts";
 
 function App() {
   const [query, setQuery] = useState("");

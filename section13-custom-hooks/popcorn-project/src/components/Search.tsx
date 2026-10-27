@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useKey } from "../services/api";
+import { useKey } from "../hooks/useKey";
 
 type Props = {
   query: string;

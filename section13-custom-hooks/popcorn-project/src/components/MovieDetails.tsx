@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
-import { useKey } from "../services/api";
+import { useKey } from "../hooks/useKey";
 
 type Props = {
   selectedId: string | null;
