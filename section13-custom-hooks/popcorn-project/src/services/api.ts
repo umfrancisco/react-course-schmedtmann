@@ -32,7 +32,7 @@ export function useMovies(query: string) {
 
 function getJsonFromLocalStorage(key: string) {
   const str = localStorage.getItem(key);
-  return str !== null ? JSON.parse(str) : null;
+  return str !== null ? JSON.parse(str) : [];
 }
 
 export function useLocalStorageState<T>(key: string) {

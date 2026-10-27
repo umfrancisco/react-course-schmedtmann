@@ -11,7 +11,7 @@ import Spinner from "./Spinner";
 
 function Form() {
   const [cityName, setCityName] = useState("");
-  const [countryName, setCountryName] = useState("");
+  const [_, setCountryName] = useState("");
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [date, setDate] = useState(new Date());
   const [geocodeError, setGeocodingError] = useState("");
@@ -48,7 +48,7 @@ function Form() {
 
   return (
     <form className={styles.form} onSubmit={submit}>
-      
+
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
