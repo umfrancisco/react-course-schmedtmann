@@ -1,40 +1,41 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "cityName": "Vierzon",
+      "country": "France",
+      "emoji": "",
+      "date": "2026-10-28T13:19:17.348Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": 47.278710140912594,
+        "lng": 2.0673181968366316
       },
-      "id": 17806751
+      "id": "2WD30Z3wA2E"
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Braives",
+      "country": "Belgium",
+      "emoji": "",
+      "date": "2026-10-28T13:19:21.744Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": 50.63962142560873,
+        "lng": 5.170478768758536
       },
-      "id": 98443197
+      "id": "sy67wfALRDI"
+    },
+    {
+      "cityName": "Deene",
+      "country": "United Kingdom of Great Britain and Northern Ireland",
+      "emoji": "",
+      "date": "2026-10-13T13:20:58.000Z",
+      "notes": "",
+      "position": {
+        "lat": 52.523934323277324,
+        "lng": -0.6123666385999327
+      },
+      "id": "H7Gms3QhDH8"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

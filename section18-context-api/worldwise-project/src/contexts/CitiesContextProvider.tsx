@@ -37,6 +37,21 @@ function CitiesContextProvider({ children }: Props) {
       .finally(() => setIsLoading(false));
   }
 
+  function createCity(city: City) {
+    setIsLoading(true);
+    fetch(`${import.meta.env.VITE_API_URL}/cities`, {
+      method: "POST",
+      body: JSON.stringify(city),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
+      .then(res => res.json())
+      .then(data => setCities(cities => [...cities, data]))
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
+  }
+
   return (
     <CitiesContext.Provider value={{
       cities,
@@ -44,7 +59,8 @@ function CitiesContextProvider({ children }: Props) {
       isLoading,
       setIsLoading,
       currentCity,
-      getCity
+      getCity,
+      createCity
     }}>
       {children}
     </CitiesContext.Provider>

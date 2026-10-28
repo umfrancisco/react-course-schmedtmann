@@ -4,14 +4,7 @@ import { useEffect } from "react";
 import styles from "./City.module.css";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
-
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long",
-  }).format(new Date(date));
+import { formatDate } from "../utils/formatDate";
 
 function City() {
   const { id } = useParams();
@@ -36,7 +29,7 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{currentCity.emoji}</span> {currentCity.cityName}
+          {currentCity.cityName}
         </h3>
       </div>
 

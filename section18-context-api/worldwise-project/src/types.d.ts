@@ -3,7 +3,7 @@ declare type City = {
   cityName: string;
   country: string;
   emoji: string;
-  date: string;
+  date: Date;
   notes: string;
   position: {
     lat: number;
@@ -24,6 +24,7 @@ declare type CityContextAPI = {
   setIsLoading: (value: boolean) => void;
   currentCity: City | undefined;
   getCity: (id: string) => void;
+  createCity: (city: City) => void;
 }
 
 declare type Country = {

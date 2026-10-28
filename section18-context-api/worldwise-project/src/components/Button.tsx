@@ -7,9 +7,13 @@ type Props = {
   type: string;
 }
 
+const getBtnType = (value: string) => {
+  return value === "primary" ? "submit" : "button";
+}
+
 function Button({ children, onClick, type }: Props) {
   return (
-    <button onClick={onClick} className={`${styles.btn} ${styles[type]}`}>
+    <button onClick={onClick} type={getBtnType(type)} className={`${styles.btn} ${styles[type]}`}>
       {children}
     </button>
   );
