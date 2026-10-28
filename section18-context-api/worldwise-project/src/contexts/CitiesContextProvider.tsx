@@ -52,6 +52,16 @@ function CitiesContextProvider({ children }: Props) {
       .finally(() => setIsLoading(false));
   }
 
+  function deleteCity(id: string) {
+    setIsLoading(true);
+    fetch(`${import.meta.env.VITE_API_URL}/cities/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => setCities(cities => cities.filter(city => city.id !== id)))
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
+  }
+
   return (
     <CitiesContext.Provider value={{
       cities,
@@ -60,7 +70,8 @@ function CitiesContextProvider({ children }: Props) {
       setIsLoading,
       currentCity,
       getCity,
-      createCity
+      createCity,
+      deleteCity
     }}>
       {children}
     </CitiesContext.Provider>

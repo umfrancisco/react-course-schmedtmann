@@ -1,76 +1,76 @@
 {
   "cities": [
     {
-      "cityName": "Trainou",
+      "cityName": "Boulleret",
       "country": "France",
       "emoji": "",
-      "date": "2026-10-28T13:51:49.370Z",
+      "date": "2026-10-28T14:08:37.410Z",
       "notes": "",
       "position": {
-        "lat": 47.959754656683565,
-        "lng": 2.111283493562426
+        "lat": 47.4572293695694,
+        "lng": 2.9003906250000004
       },
-      "id": "krmYX6Y611k"
+      "id": "LQde88v5VDE"
     },
     {
-      "cityName": "Yelvertoft",
+      "cityName": "Latimer",
       "country": "United Kingdom",
       "emoji": "",
-      "date": "2026-10-28T13:52:11.659Z",
+      "date": "2026-10-28T14:08:41.581Z",
       "notes": "",
       "position": {
-        "lat": 52.37580927936847,
-        "lng": -1.0945959988915321
+        "lat": 51.68647352105703,
+        "lng": -0.5712890625000001
       },
-      "id": "xEvG83boWOU"
+      "id": "AolT0R2wo-s"
     },
     {
-      "cityName": "Teslic",
-      "country": "Bosnia and Herzegovina",
+      "cityName": "Birr",
+      "country": "Ireland",
       "emoji": "",
-      "date": "2026-10-28T13:52:17.590Z",
+      "date": "2026-10-28T14:08:46.338Z",
       "notes": "",
       "position": {
-        "lat": 44.45209902958202,
-        "lng": 17.721042190697485
+        "lat": 53.33195085748768,
+        "lng": -7.844238281250001
       },
-      "id": "gV3HNpuvLkg"
+      "id": "t1R46K4SPNY"
     },
     {
-      "cityName": "Michael",
-      "country": "Isle of Man",
+      "cityName": "Retiendas",
+      "country": "Spain",
       "emoji": "",
-      "date": "2026-10-28T13:52:28.935Z",
+      "date": "2026-10-28T14:08:49.594Z",
       "notes": "",
       "position": {
-        "lat": 54.262255861340485,
-        "lng": -4.530241629273971
+        "lat": 40.96674411853479,
+        "lng": -3.2958984375000004
       },
-      "id": "EXfw1sQprZE"
+      "id": "YAofNHsqLZw"
     },
     {
-      "cityName": "Suzdalskiy Rayon",
-      "country": "Russian Federation",
+      "cityName": "Auzat",
+      "country": "France",
       "emoji": "",
-      "date": "2026-10-28T13:52:36.315Z",
+      "date": "2026-10-28T14:08:52.540Z",
       "notes": "",
       "position": {
-        "lat": 56.51157453801653,
-        "lng": 40.53080768246932
+        "lat": 42.700007923296695,
+        "lng": 1.3623046875000002
       },
-      "id": "1AQLYjbdbSI"
+      "id": "eMRW5TfMvr8"
     },
     {
-      "cityName": "Kompiam",
-      "country": "Papua New Guinea",
+      "cityName": "Ordino",
+      "country": "Andorra",
       "emoji": "",
-      "date": "2026-10-28T13:52:42.624Z",
+      "date": "2026-10-28T14:09:00.574Z",
       "notes": "",
       "position": {
-        "lat": -5.348891647206851,
-        "lng": 144.1102889452592
+        "lat": 42.58648105170987,
+        "lng": 1.558685302734375
       },
-      "id": "RcpvUPvy8BI"
+      "id": "awkUdNsO64w"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -25,6 +25,7 @@ declare type CityContextAPI = {
   currentCity: City | undefined;
   getCity: (id: string) => void;
   createCity: (city: City) => void;
+  deleteCity: (id: string) => void;
 }
 
 declare type Country = {
