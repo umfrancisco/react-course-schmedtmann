@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer, type ReactNode } from "react";
+import { useEffect, useReducer, type ReactNode } from "react";
 import { CitiesContext } from "./CitiesContext";
 
 const initialState: State = {
