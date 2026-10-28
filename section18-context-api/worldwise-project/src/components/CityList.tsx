@@ -1,4 +1,4 @@
-import { useCitiesContext } from "../contexts/CitiesContextProvider";
+import { useCitiesContext } from "../contexts/CitiesContext";
 import CityItem from "./CityItem";
 import styles from "./CityList.module.css";
 import Message from "./Message";

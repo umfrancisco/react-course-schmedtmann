@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useCitiesContext } from "../contexts/CitiesContextProvider";
-import styles from "./CityItem.module.css";
+import { useCitiesContext } from "../contexts/CitiesContext";
 import { formatDate } from "../utils/formatDate";
+import styles from "./CityItem.module.css";
 
 type Props = {
   city: City;

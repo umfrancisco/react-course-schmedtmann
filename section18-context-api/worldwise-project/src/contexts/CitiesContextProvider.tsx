@@ -1,14 +1,5 @@
 import { createContext, useContext, useEffect, useReducer, type ReactNode } from "react";
-
-export const CitiesContext = createContext<CityContextAPI>(null!);
-
-export function useCitiesContext() {
-  const context = useContext(CitiesContext);
-  if (context === null) {
-    throw new Error("CitiesContext was used outside the CitiesContextProvider");
-  }
-  return context;
-}
+import { CitiesContext } from "./CitiesContext";
 
 const initialState: State = {
   cities: [],

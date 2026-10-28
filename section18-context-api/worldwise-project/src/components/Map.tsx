@@ -1,12 +1,12 @@
 import type { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCitiesContext } from "../contexts/CitiesContextProvider";
+import { useNavigate } from "react-router-dom";
+import { useCitiesContext } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
-import styles from "./Map.module.css";
-import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
+import Button from "./Button";
+import styles from "./Map.module.css";
 
 type Props = {
   position: LatLngExpression;

@@ -1,64 +1,64 @@
 {
   "cities": [
     {
-      "cityName": "Margonin",
-      "country": "Poland",
-      "emoji": "",
-      "date": "2026-10-28T20:18:53.422Z",
-      "notes": "",
-      "position": {
-        "lat": 52.91576472086797,
-        "lng": 17.155314874920855
-      },
-      "id": "03QEU2NKgRM"
-    },
-    {
-      "cityName": "Treuzy-Levelay",
+      "cityName": "Nailly",
       "country": "France",
       "emoji": "",
-      "date": "2026-10-28T20:20:41.458Z",
+      "date": "2026-10-28T20:26:57.270Z",
       "notes": "",
       "position": {
-        "lat": 48.28494360034107,
-        "lng": 2.818455856158977
+        "lat": 48.22610946836875,
+        "lng": 3.1916292080628543
       },
-      "id": "FQghbI9gfsM"
+      "id": "7KK7bDQiC6A"
     },
     {
-      "cityName": "Pukhavichy Raion",
-      "country": "Belarus",
+      "cityName": "Viglain",
+      "country": "France",
       "emoji": "",
-      "date": "2026-10-28T20:20:51.329Z",
+      "date": "2026-10-28T20:26:58.963Z",
       "notes": "",
       "position": {
-        "lat": 53.52821631465838,
-        "lng": 27.888059899956446
+        "lat": 47.711789115759274,
+        "lng": 2.312068927129523
       },
-      "id": "hF16qUpX-Pc"
+      "id": "0NAyxNNN_uQ"
     },
     {
-      "cityName": "Kedainiai",
-      "country": "Lithuania",
+      "cityName": "Heldburg",
+      "country": "Germany",
       "emoji": "",
-      "date": "2026-10-28T20:20:55.920Z",
+      "date": "2026-10-28T20:27:00.978Z",
       "notes": "",
       "position": {
-        "lat": 55.50463346576552,
-        "lng": 23.821281640872407
+        "lat": 50.220396297594114,
+        "lng": 10.70558186797419
       },
-      "id": "HELGYgISZBY"
+      "id": "4k60XxJaqOo"
     },
     {
-      "cityName": "Turi vald",
-      "country": "Estonia",
+      "cityName": "Okres Ruzomberok",
+      "country": "Slovakia",
       "emoji": "",
-      "date": "2026-10-28T20:21:04.085Z",
+      "date": "2026-10-28T20:27:03.164Z",
       "notes": "",
       "position": {
-        "lat": 58.76842222608922,
-        "lng": 25.29713723084231
+        "lat": 49.112025562781255,
+        "lng": 19.280943239392045
       },
-      "id": "qGh_05BYVUc"
+      "id": "eHjRd6lrkgM"
+    },
+    {
+      "cityName": "Rzgow",
+      "country": "Poland",
+      "emoji": "",
+      "date": "2026-10-28T20:27:05.326Z",
+      "notes": "",
+      "position": {
+        "lat": 51.660027327210656,
+        "lng": 19.492529204104656
+      },
+      "id": "Ok9JqUVETt8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
