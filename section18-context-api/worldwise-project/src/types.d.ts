@@ -19,16 +19,35 @@ declare type Position = {
 
 declare type CityContextAPI = {
   cities: City[];
-  setCities: (value: City[]) => void;
   isLoading: boolean;
-  setIsLoading: (value: boolean) => void;
   currentCity: City | undefined;
   getCity: (id: string) => void;
   createCity: (city: City) => void;
   deleteCity: (id: string) => void;
-} | null;
+}
 
 declare type Country = {
   country: string;
   emoji: string;
+}
+
+declare type State = {
+  cities: City[];
+  isLoading: boolean;
+  currentCity: City | undefined;
+  error: Error | null;
+}
+
+declare type PayloadAction = {
+  type: "loading";
+} | {
+  type: "cities/loaded", payload: City[];
+} | {
+  type: "city/loaded", payload: City;
+} | {
+  type: "city/created", payload: City;
+} | {
+  type: "city/deleted", payload: string;
+} | {
+  type: "rejected", payload: Error;
 }

@@ -1,64 +1,64 @@
 {
   "cities": [
     {
-      "cityName": "Smolevichskiy Rayon",
-      "country": "Belarus",
-      "emoji": "",
-      "date": "2026-10-28T19:41:23.712Z",
-      "notes": "",
-      "position": {
-        "lat": 54.166589169537495,
-        "lng": 27.981168856871466
-      },
-      "id": "3r3-1ITT0Ys"
-    },
-    {
-      "cityName": "Wittenberg, Lutherstadt",
-      "country": "Germany",
-      "emoji": "",
-      "date": "2026-10-28T19:41:27.001Z",
-      "notes": "",
-      "position": {
-        "lat": 51.95182618578502,
-        "lng": 12.668551347767579
-      },
-      "id": "mtTNyXyJQBA"
-    },
-    {
-      "cityName": "Vanatori",
-      "country": "Romania",
-      "emoji": "",
-      "date": "2026-10-28T19:41:30.009Z",
-      "notes": "",
-      "position": {
-        "lat": 45.71615515540917,
-        "lng": 27.27732024817922
-      },
-      "id": "1XVxJLqhjJU"
-    },
-    {
-      "cityName": "Logresti",
-      "country": "Romania",
-      "emoji": "",
-      "date": "2026-10-28T19:41:32.601Z",
-      "notes": "",
-      "position": {
-        "lat": 44.91063811825881,
-        "lng": 23.75022883351805
-      },
-      "id": "_mOT03ug8FA"
-    },
-    {
-      "cityName": "Siemiatkowo",
+      "cityName": "Margonin",
       "country": "Poland",
       "emoji": "",
-      "date": "2026-10-28T19:41:39.240Z",
+      "date": "2026-10-28T20:18:53.422Z",
       "notes": "",
       "position": {
-        "lat": 52.85994631744675,
-        "lng": 20.058711259103845
+        "lat": 52.91576472086797,
+        "lng": 17.155314874920855
       },
-      "id": "DkIWU0hNVD0"
+      "id": "03QEU2NKgRM"
+    },
+    {
+      "cityName": "Treuzy-Levelay",
+      "country": "France",
+      "emoji": "",
+      "date": "2026-10-28T20:20:41.458Z",
+      "notes": "",
+      "position": {
+        "lat": 48.28494360034107,
+        "lng": 2.818455856158977
+      },
+      "id": "FQghbI9gfsM"
+    },
+    {
+      "cityName": "Pukhavichy Raion",
+      "country": "Belarus",
+      "emoji": "",
+      "date": "2026-10-28T20:20:51.329Z",
+      "notes": "",
+      "position": {
+        "lat": 53.52821631465838,
+        "lng": 27.888059899956446
+      },
+      "id": "hF16qUpX-Pc"
+    },
+    {
+      "cityName": "Kedainiai",
+      "country": "Lithuania",
+      "emoji": "",
+      "date": "2026-10-28T20:20:55.920Z",
+      "notes": "",
+      "position": {
+        "lat": 55.50463346576552,
+        "lng": 23.821281640872407
+      },
+      "id": "HELGYgISZBY"
+    },
+    {
+      "cityName": "Turi vald",
+      "country": "Estonia",
+      "emoji": "",
+      "date": "2026-10-28T20:21:04.085Z",
+      "notes": "",
+      "position": {
+        "lat": 58.76842222608922,
+        "lng": 25.29713723084231
+      },
+      "id": "qGh_05BYVUc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
