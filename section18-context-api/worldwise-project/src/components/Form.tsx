@@ -50,9 +50,12 @@ function Form() {
       return;
     }
 
+    const countryNameArr = countryName.split(" ");
+    const country = (countryNameArr.length <= 1 || countryName.length <= 30) ? countryName : countryNameArr[0]+" "+countryNameArr[1];
+
     const newCity: City = {
       cityName,
-      country: countryName,
+      country,
       emoji: "",
       date,
       notes,

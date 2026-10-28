@@ -1,40 +1,76 @@
 {
   "cities": [
     {
-      "cityName": "Vierzon",
+      "cityName": "Trainou",
       "country": "France",
       "emoji": "",
-      "date": "2026-10-28T13:19:17.348Z",
+      "date": "2026-10-28T13:51:49.370Z",
       "notes": "",
       "position": {
-        "lat": 47.278710140912594,
-        "lng": 2.0673181968366316
+        "lat": 47.959754656683565,
+        "lng": 2.111283493562426
       },
-      "id": "2WD30Z3wA2E"
+      "id": "krmYX6Y611k"
     },
     {
-      "cityName": "Braives",
-      "country": "Belgium",
+      "cityName": "Yelvertoft",
+      "country": "United Kingdom",
       "emoji": "",
-      "date": "2026-10-28T13:19:21.744Z",
+      "date": "2026-10-28T13:52:11.659Z",
       "notes": "",
       "position": {
-        "lat": 50.63962142560873,
-        "lng": 5.170478768758536
+        "lat": 52.37580927936847,
+        "lng": -1.0945959988915321
       },
-      "id": "sy67wfALRDI"
+      "id": "xEvG83boWOU"
     },
     {
-      "cityName": "Deene",
-      "country": "United Kingdom of Great Britain and Northern Ireland",
+      "cityName": "Teslic",
+      "country": "Bosnia and Herzegovina",
       "emoji": "",
-      "date": "2026-10-13T13:20:58.000Z",
+      "date": "2026-10-28T13:52:17.590Z",
       "notes": "",
       "position": {
-        "lat": 52.523934323277324,
-        "lng": -0.6123666385999327
+        "lat": 44.45209902958202,
+        "lng": 17.721042190697485
       },
-      "id": "H7Gms3QhDH8"
+      "id": "gV3HNpuvLkg"
+    },
+    {
+      "cityName": "Michael",
+      "country": "Isle of Man",
+      "emoji": "",
+      "date": "2026-10-28T13:52:28.935Z",
+      "notes": "",
+      "position": {
+        "lat": 54.262255861340485,
+        "lng": -4.530241629273971
+      },
+      "id": "EXfw1sQprZE"
+    },
+    {
+      "cityName": "Suzdalskiy Rayon",
+      "country": "Russian Federation",
+      "emoji": "",
+      "date": "2026-10-28T13:52:36.315Z",
+      "notes": "",
+      "position": {
+        "lat": 56.51157453801653,
+        "lng": 40.53080768246932
+      },
+      "id": "1AQLYjbdbSI"
+    },
+    {
+      "cityName": "Kompiam",
+      "country": "Papua New Guinea",
+      "emoji": "",
+      "date": "2026-10-28T13:52:42.624Z",
+      "notes": "",
+      "position": {
+        "lat": -5.348891647206851,
+        "lng": 144.1102889452592
+      },
+      "id": "RcpvUPvy8BI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

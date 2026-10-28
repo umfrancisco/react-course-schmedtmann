@@ -14,7 +14,7 @@ type Props = {
 
 function ChangeCenter({ position }: Props) {
   const map = useMap();
-  map.setView(position, 6);
+  map.setView(position);
   return null;
 }
 
@@ -56,7 +56,7 @@ function Map() {
           {isLoadingPosition ? "Loading..." : "Use your position"}
         </Button>
       )}
-      <MapContainer center={position} zoom={8} scrollWheelZoom={true} className={styles.map}>
+      <MapContainer center={position} zoom={6} scrollWheelZoom={true} className={styles.map}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
