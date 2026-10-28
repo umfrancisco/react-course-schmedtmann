@@ -1,76 +1,64 @@
 {
   "cities": [
     {
-      "cityName": "Boulleret",
-      "country": "France",
+      "cityName": "Smolevichskiy Rayon",
+      "country": "Belarus",
       "emoji": "",
-      "date": "2026-10-28T14:08:37.410Z",
+      "date": "2026-10-28T19:41:23.712Z",
       "notes": "",
       "position": {
-        "lat": 47.4572293695694,
-        "lng": 2.9003906250000004
+        "lat": 54.166589169537495,
+        "lng": 27.981168856871466
       },
-      "id": "LQde88v5VDE"
+      "id": "3r3-1ITT0Ys"
     },
     {
-      "cityName": "Latimer",
-      "country": "United Kingdom",
+      "cityName": "Wittenberg, Lutherstadt",
+      "country": "Germany",
       "emoji": "",
-      "date": "2026-10-28T14:08:41.581Z",
+      "date": "2026-10-28T19:41:27.001Z",
       "notes": "",
       "position": {
-        "lat": 51.68647352105703,
-        "lng": -0.5712890625000001
+        "lat": 51.95182618578502,
+        "lng": 12.668551347767579
       },
-      "id": "AolT0R2wo-s"
+      "id": "mtTNyXyJQBA"
     },
     {
-      "cityName": "Birr",
-      "country": "Ireland",
+      "cityName": "Vanatori",
+      "country": "Romania",
       "emoji": "",
-      "date": "2026-10-28T14:08:46.338Z",
+      "date": "2026-10-28T19:41:30.009Z",
       "notes": "",
       "position": {
-        "lat": 53.33195085748768,
-        "lng": -7.844238281250001
+        "lat": 45.71615515540917,
+        "lng": 27.27732024817922
       },
-      "id": "t1R46K4SPNY"
+      "id": "1XVxJLqhjJU"
     },
     {
-      "cityName": "Retiendas",
-      "country": "Spain",
+      "cityName": "Logresti",
+      "country": "Romania",
       "emoji": "",
-      "date": "2026-10-28T14:08:49.594Z",
+      "date": "2026-10-28T19:41:32.601Z",
       "notes": "",
       "position": {
-        "lat": 40.96674411853479,
-        "lng": -3.2958984375000004
+        "lat": 44.91063811825881,
+        "lng": 23.75022883351805
       },
-      "id": "YAofNHsqLZw"
+      "id": "_mOT03ug8FA"
     },
     {
-      "cityName": "Auzat",
-      "country": "France",
+      "cityName": "Siemiatkowo",
+      "country": "Poland",
       "emoji": "",
-      "date": "2026-10-28T14:08:52.540Z",
+      "date": "2026-10-28T19:41:39.240Z",
       "notes": "",
       "position": {
-        "lat": 42.700007923296695,
-        "lng": 1.3623046875000002
+        "lat": 52.85994631744675,
+        "lng": 20.058711259103845
       },
-      "id": "eMRW5TfMvr8"
-    },
-    {
-      "cityName": "Ordino",
-      "country": "Andorra",
-      "emoji": "",
-      "date": "2026-10-28T14:09:00.574Z",
-      "notes": "",
-      "position": {
-        "lat": 42.58648105170987,
-        "lng": 1.558685302734375
-      },
-      "id": "awkUdNsO64w"
+      "id": "DkIWU0hNVD0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

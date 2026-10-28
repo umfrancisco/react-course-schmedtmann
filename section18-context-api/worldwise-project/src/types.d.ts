@@ -26,7 +26,7 @@ declare type CityContextAPI = {
   getCity: (id: string) => void;
   createCity: (city: City) => void;
   deleteCity: (id: string) => void;
-}
+} | null;
 
 declare type Country = {
   country: string;

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-export const CitiesContext = createContext<CityContextAPI>(null!);
+export const CitiesContext = createContext<CityContextAPI>(null);
 
 export function useCitiesContext() {
   const context = useContext(CitiesContext);
@@ -29,6 +29,7 @@ function CitiesContextProvider({ children }: Props) {
   }, []);
 
   function getCity(id: string) {
+    if (id === currentCity?.id) return;
     setIsLoading(true);
     fetch(`${import.meta.env.VITE_API_URL}/cities/${id}`)
       .then(res => res.json())
