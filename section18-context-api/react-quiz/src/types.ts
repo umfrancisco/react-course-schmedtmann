@@ -19,16 +19,6 @@ export type QuestionType = {
   points: number;
 };
 
-export const initialState: State = {
-  questions: [],
-  status: "loading",
-  index: 0,
-  answer: null,
-  points: 0,
-  highscore: 0,
-  secondsRemaining: 0,
-};
-
 export type PayloadAction = 
 | { type: "received", payload: QuestionType[]; } 
 | { type: "failed"; } 
@@ -38,3 +28,10 @@ export type PayloadAction =
 | { type: "finish"; } 
 | { type: "reset"; } 
 | { type: "timer"; };
+
+export type QuizContextType = {
+  state: State;
+  dispatch: (action: PayloadAction) => void;
+  numberQuestions: number;
+  maxPoints: number;
+}

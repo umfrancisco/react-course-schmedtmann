@@ -1,4 +1,16 @@
-import { initialState, type PayloadAction, type State } from "../types";
+import { useEffect, useReducer, type ReactNode } from "react";
+import type { PayloadAction, State } from "../types";
+import { QuizContext } from "./QuizContext";
+
+export const initialState: State = {
+  questions: [],
+  status: "loading",
+  index: 0,
+  answer: null,
+  points: 0,
+  highscore: 0,
+  secondsRemaining: 0,
+};
 
 const SECONDS_PER_QUESTION = 30;
 
@@ -34,3 +46,33 @@ export function reducer(state: State, action: PayloadAction): State {
   }
   return state;
 }
+
+type Props = {
+  children: ReactNode;
+}
+
+function QuizContextProvider({ children }: Props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const numberQuestions = state.questions ? state.questions.length : 0;
+  const maxPoints = state.questions ? state.questions.reduce((prev, curr) => prev + curr.points, 0) : 0;
+
+  useEffect(() => {
+    fetch("http://localhost:3000/questions")
+      .then(res => res.json())
+      .then(data => dispatch({ type: "received", payload: data }))
+      .catch(() => dispatch({ type: "failed" }));
+  }, []);
+
+  return (
+    <QuizContext.Provider value={{
+      state,
+      dispatch,
+      numberQuestions,
+      maxPoints
+    }}>
+      {children}
+    </QuizContext.Provider>
+  );
+}
+
+export default QuizContextProvider;

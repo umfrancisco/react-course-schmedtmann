@@ -1,14 +1,14 @@
-import type { ActionDispatch } from "react";
 import Options from "./Options";
-import type { PayloadAction, QuestionType } from "../types";
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  question: QuestionType;
-  dispatch: ActionDispatch<[action: PayloadAction]>;
-  answer: number | null;
-};
+function Question() {
+  const { state, dispatch } = useQuizContext();
+  const { index, answer, questions } = state;
+  const question = questions ? questions[index] : undefined;
 
-function Question({ question, dispatch, answer }: Props) {
+  if (!question) {
+    return;
+  }
 
   return (
     <div>

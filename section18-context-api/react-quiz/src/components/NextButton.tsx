@@ -1,15 +1,12 @@
-import type { ActionDispatch } from "react";
-import type { PayloadAction } from "../types";
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  dispatch: ActionDispatch<[action: PayloadAction]>;
-  answer: number | null;
-  index: number;
-  numberQuestions: number;
-}
+function NextButton() {
+  const { state, dispatch, numberQuestions } = useQuizContext();
+  const { answer, index } = state;
 
-function NextButton({ dispatch, answer, index, numberQuestions }: Props) {
-  if (answer === null) return null;
+  if (answer === null) {
+    return null;
+  }
 
   if (index < numberQuestions - 1) {
     return (

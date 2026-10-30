@@ -1,12 +1,9 @@
-import { useEffect, type ActionDispatch } from "react";
-import type { PayloadAction } from "../types";
+import { useEffect } from "react";
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  dispatch: ActionDispatch<[action: PayloadAction]>;
-  secondsRemaining: number;
-}
-
-function Timer({ dispatch, secondsRemaining }: Props) {
+function Timer() {
+  const { state, dispatch } = useQuizContext();
+  const { secondsRemaining } = state;
   const minutes = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
   const formatted = (minutes < 10 ? "0"+minutes : minutes)+":"+(seconds < 10 ? "0"+seconds : seconds);

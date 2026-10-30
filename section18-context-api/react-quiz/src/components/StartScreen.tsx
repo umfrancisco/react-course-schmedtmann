@@ -1,12 +1,7 @@
-import type { ActionDispatch } from "react";
-import type { PayloadAction } from "../types";
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  numberQuestions: number;
-  dispatch: ActionDispatch<[action: PayloadAction]>;
-}
-
-function StartScreen({ numberQuestions, dispatch }: Props) {
+function StartScreen() {
+  const { numberQuestions, dispatch } = useQuizContext();
   
   return (
     <div className="start">

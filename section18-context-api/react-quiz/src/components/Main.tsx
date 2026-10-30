@@ -1,13 +1,33 @@
-import type { ReactNode } from "react";
+import { useQuizContext } from "../contexts/QuizContext";
+import Error from "./Error";
+import FinishScreen from "./FinishScreen";
+import Footer from "./Footer";
+import Loader from "./Loader";
+import NextButton from "./NextButton";
+import Progress from "./Progress";
+import Question from "./Question";
+import StartScreen from "./StartScreen";
+import Timer from "./Timer";
 
-type Props = {
-  children: ReactNode;
-};
+function Main() {
+  const { state } = useQuizContext();
 
-function Main({ children }: Props) {
   return (
     <main className="main">
-      {children}
+      {state.status === "loading" && <Loader />}
+      {state.status === "error" && <Error />}
+      {state.status === "ready" && <StartScreen />}
+      {state.status === "active" && state.questions && (
+        <>
+          <Progress />
+          <Question />
+          <Footer>
+            <Timer />
+            <NextButton />
+          </Footer>
+        </>
+      )}
+      {state.status === "finished" && <FinishScreen />}
     </main>
   );
 }

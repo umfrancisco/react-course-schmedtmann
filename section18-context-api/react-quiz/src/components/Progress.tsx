@@ -1,13 +1,8 @@
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  index: number;
-  numberQuestions: number;
-  points: number;
-  maxPoints: number;
-  answer: number | null;
-}
-
-function Progress({ index, numberQuestions, points, maxPoints, answer }: Props) {
+function Progress() {
+  const { state, numberQuestions, maxPoints } = useQuizContext();
+  const { index, answer, points } = state;
 
   return (
     <header className="progress">

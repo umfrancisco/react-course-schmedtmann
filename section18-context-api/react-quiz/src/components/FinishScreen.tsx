@@ -1,14 +1,8 @@
-import type { ActionDispatch } from "react";
-import type { PayloadAction } from "../types";
+import { useQuizContext } from "../contexts/QuizContext";
 
-type Props = {
-  points: number;
-  maxPoints: number;
-  highscore: number;
-  dispatch: ActionDispatch<[action: PayloadAction]>;
-}
-
-function FinishScreen({ points, maxPoints, highscore, dispatch }: Props) {
+function FinishScreen() {
+  const { state, dispatch, maxPoints } = useQuizContext();
+  const { points, highscore } = state;
   const percentage = maxPoints && (points / maxPoints) * 100;
 
   return (
