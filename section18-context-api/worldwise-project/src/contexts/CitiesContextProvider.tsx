@@ -1,14 +1,15 @@
 import { useEffect, useReducer, type ReactNode } from "react";
 import { CitiesContext } from "./CitiesContext";
+import type { City, CityPayloadAction, CityState } from "../types";
 
-const initialState: State = {
+const initialState: CityState = {
   cities: [],
   isLoading: false,
   currentCity: undefined,
   error: null,
 }
 
-function reducer(state: State, action: PayloadAction) {
+function reducer(state: CityState, action: CityPayloadAction) {
   switch (action.type) {
     case "loading":
       return { ...state, isLoading: true };

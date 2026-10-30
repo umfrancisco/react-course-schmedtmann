@@ -11,6 +11,7 @@ import Button from "./Button";
 import styles from "./Form.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import type { City } from "../types";
 
 function Form() {
   const [cityName, setCityName] = useState("");

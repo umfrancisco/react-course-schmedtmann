@@ -1,4 +1,5 @@
 import { useCitiesContext } from "../contexts/CitiesContext";
+import type { Country } from "../types";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import Message from "./Message";
