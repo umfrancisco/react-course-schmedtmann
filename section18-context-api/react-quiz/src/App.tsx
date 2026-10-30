@@ -1,17 +1,17 @@
 import { useEffect, useReducer } from "react";
-import { Action, initialState, Status } from "./constants";
-import { reducer } from "./services/api";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Loader from "./components/Loader";
 import Error from "./components/Error";
-import StartScreen from "./components/StartScreen";
-import Question from "./components/Question";
+import FinishScreen from "./components/FinishScreen";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Loader from "./components/Loader";
+import Main from "./components/Main";
 import NextButton from "./components/NextButton";
 import Progress from "./components/Progress";
-import FinishScreen from "./components/FinishScreen";
+import Question from "./components/Question";
+import StartScreen from "./components/StartScreen";
 import Timer from "./components/Timer";
-import Footer from "./components/Footer";
+import { reducer } from "./services/api";
+import { initialState } from "./types";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -21,18 +21,18 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000/questions")
       .then(res => res.json())
-      .then(data => dispatch({ type: Action.RECEIVED, payload: data }))
-      .catch(() => dispatch({ type: Action.FAILED }));
+      .then(data => dispatch({ type: "received", payload: data }))
+      .catch(() => dispatch({ type: "failed" }));
   }, []);
 
   return (
     <div className="app">
       <Header />
       <Main>
-        {state.status === Status.LOADING && <Loader />}
-        {state.status === Status.ERROR && <Error />}
-        {state.status === Status.READY && <StartScreen numberQuestions={numberQuestions} dispatch={dispatch} />}
-        {state.status === Status.ACTIVE && state.questions && (
+        {state.status === "loading" && <Loader />}
+        {state.status === "error" && <Error />}
+        {state.status === "ready" && <StartScreen numberQuestions={numberQuestions} dispatch={dispatch} />}
+        {state.status === "active" && state.questions && (
           <>
             <Progress index={state.index} numberQuestions={numberQuestions} points={state.points} maxPoints={maxPoints} answer={state.answer} />
             <Question question={state.questions[state.index]} dispatch={dispatch} answer={state.answer} />
@@ -42,7 +42,7 @@ function App() {
             </Footer>
           </>
         )}
-        {state.status === Status.FINISHED && <FinishScreen points={state.points} maxPoints={maxPoints} highscore={state.highscore} dispatch={dispatch} />}
+        {state.status === "finished" && <FinishScreen points={state.points} maxPoints={maxPoints} highscore={state.highscore} dispatch={dispatch} />}
       </Main>
     </div>
   );

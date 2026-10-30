@@ -1,5 +1,5 @@
 import { useEffect, type ActionDispatch } from "react";
-import { Action, type PayloadAction } from "../constants";
+import type { PayloadAction } from "../types";
 
 type Props = {
   dispatch: ActionDispatch<[action: PayloadAction]>;
@@ -13,7 +13,7 @@ function Timer({ dispatch, secondsRemaining }: Props) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      dispatch({ type: Action.TIMER });
+      dispatch({ type: "timer" });
     }, 1000);
     return () => clearInterval(id);
   }, [dispatch]);

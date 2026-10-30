@@ -1,5 +1,5 @@
 import type { ActionDispatch } from "react";
-import { Action, type PayloadAction } from "../constants";
+import type { PayloadAction } from "../types";
 
 type Props = {
   numberQuestions: number;
@@ -12,7 +12,7 @@ function StartScreen({ numberQuestions, dispatch }: Props) {
     <div className="start">
       <h2>Welcome to the React Quiz!</h2>
       <h3>{numberQuestions} questions to test your React Mastery</h3>
-      <button className="btn btn-ui" onClick={() => dispatch({ type: Action.START })}>Let's start</button>
+      <button className="btn btn-ui" onClick={() => dispatch({ type: "start" })}>Let's start</button>
     </div>
   );
 }

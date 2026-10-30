@@ -1,5 +1,5 @@
 import type { ActionDispatch } from "react";
-import { Action, type PayloadAction } from "../constants";
+import type { PayloadAction } from "../types";
 
 type Props = {
   points: number;
@@ -17,7 +17,7 @@ function FinishScreen({ points, maxPoints, highscore, dispatch }: Props) {
         You scored <strong>{points}</strong> out of {maxPoints} ({percentage && Math.ceil(percentage)}%)
       </p>
       <p className="highscore">(Highscore: {highscore} points)</p>
-      <button className="btn btn-ui" onClick={() => dispatch({ type: Action.RESET })}>Reset</button>
+      <button className="btn btn-ui" onClick={() => dispatch({ type: "reset" })}>Reset</button>
     </>
   );
 }
