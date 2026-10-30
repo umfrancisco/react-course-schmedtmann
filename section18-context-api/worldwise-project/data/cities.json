@@ -1,64 +1,40 @@
 {
   "cities": [
     {
-      "cityName": "Heldburg",
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "",
+      "date": "2026-10-30T13:43:01.848Z",
+      "notes": "",
+      "position": {
+        "lat": 48.86470611452457,
+        "lng": 2.3465565686410765
+      },
+      "id": "KUqSu3Wch40"
+    },
+    {
+      "cityName": "London",
+      "country": "United Kingdom",
+      "emoji": "",
+      "date": "2026-10-30T13:43:12.852Z",
+      "notes": "",
+      "position": {
+        "lat": 51.52222387770151,
+        "lng": -0.09475269081399286
+      },
+      "id": "vtu1l0Ig5Iw"
+    },
+    {
+      "cityName": "Berlin",
       "country": "Germany",
       "emoji": "",
-      "date": "2026-10-28T20:27:00.978Z",
+      "date": "2026-10-30T13:43:22.622Z",
       "notes": "",
       "position": {
-        "lat": 50.220396297594114,
-        "lng": 10.70558186797419
+        "lat": 52.522984320429416,
+        "lng": 13.40762343732443
       },
-      "id": "4k60XxJaqOo"
-    },
-    {
-      "cityName": "Rzgow",
-      "country": "Poland",
-      "emoji": "",
-      "date": "2026-10-28T20:27:05.326Z",
-      "notes": "",
-      "position": {
-        "lat": 51.660027327210656,
-        "lng": 19.492529204104656
-      },
-      "id": "Ok9JqUVETt8"
-    },
-    {
-      "cityName": "Montchevrier",
-      "country": "France",
-      "emoji": "",
-      "date": "2026-10-30T12:40:50.209Z",
-      "notes": "",
-      "position": {
-        "lat": 46.48412310394033,
-        "lng": 1.7369108241984457
-      },
-      "id": "FZuxA4BAj5Y"
-    },
-    {
-      "cityName": "Eole-en-Beauce",
-      "country": "France",
-      "emoji": "",
-      "date": "2026-10-30T12:40:53.803Z",
-      "notes": "",
-      "position": {
-        "lat": 48.196631326760766,
-        "lng": 1.6946246535407594
-      },
-      "id": "5narkb9bbsk"
-    },
-    {
-      "cityName": "Saint-Salvadour",
-      "country": "France",
-      "emoji": "",
-      "date": "2026-10-30T13:22:19.853Z",
-      "notes": "",
-      "position": {
-        "lat": 45.40103835447522,
-        "lng": 1.7622368782460909
-      },
-      "id": "1w_qU2nLY48"
+      "id": "DaJ6OBTksOo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
