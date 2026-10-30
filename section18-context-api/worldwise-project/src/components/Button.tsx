@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 
 type Props = {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   type: string;
 }
 

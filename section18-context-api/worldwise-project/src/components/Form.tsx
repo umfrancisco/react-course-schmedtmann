@@ -1,17 +1,17 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SubmitEvent } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useCitiesContext } from "../contexts/CitiesContext";
 import { useUrlPosition } from "../hooks/useUrlPosition";
+import type { City } from "../types";
 import BackButton from "./BackButton";
 import Button from "./Button";
 import styles from "./Form.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
-import type { City } from "../types";
 
 function Form() {
   const [cityName, setCityName] = useState("");
@@ -44,7 +44,7 @@ function Form() {
       .finally(() => setIsLoadingGeocoding(false));
   }, [lat, lng]);
 
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (!cityName || !date) {
@@ -115,7 +115,7 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <Button onClick={() => ""} type="primary">Add</Button>
+        <Button type="primary">Add</Button>
         <BackButton />
       </div>
     </form>

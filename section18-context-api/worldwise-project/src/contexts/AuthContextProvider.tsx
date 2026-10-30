@@ -13,7 +13,7 @@ function reducer(state: AuthState, action: AuthPayloadAction) {
     case "login":
       return { ...state, user: action.payload, isAuthenticated: true };
     case "logout":
-      return { ...state, isAuthenticated: false };
+      return { ...state, user: null, isAuthenticated: false };
     default:
       throw new Error("Unknown action");
   }
