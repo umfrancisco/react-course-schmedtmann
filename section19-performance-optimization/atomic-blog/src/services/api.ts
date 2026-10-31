@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { createContext } from "react";
+import type { PostContextType } from "../types";
 
 export function createRandomPost() {
   return {
@@ -8,4 +9,4 @@ export function createRandomPost() {
   };
 }
 
-export const PostContext = createContext<PostContextAPI>(null!);
+export const PostContext = createContext<PostContextType>(null!);

@@ -1,10 +1,10 @@
 
-declare type Post = {
+export type Post = {
   title: string;
   body: string;
 }
 
-declare type PostContextAPI = {
+export type PostContextType = {
   posts: Post[];
   onAddPost: (post: Post) => void;
   onClearPosts: () => void;

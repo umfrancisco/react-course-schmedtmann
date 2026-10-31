@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { createRandomPost, PostContext } from "../services/api";
+import type { Post } from "../types";
 
 type Props = {
   children: ReactNode;
