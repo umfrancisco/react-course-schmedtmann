@@ -6,6 +6,11 @@ import Archive from "./components/Archive";
 import Footer from "./components/Footer";
 import { createRandomPost } from "./utils";
 
+const archiveOptions = {
+  show: false,
+  title: "Post archive in addition to main posts",
+}
+
 function App() {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
@@ -53,7 +58,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive show={false} />
+      <Archive archiveOptions={archiveOptions} />
       <Footer />
     </section>
   );

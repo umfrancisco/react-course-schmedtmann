@@ -1,21 +1,22 @@
 import { memo, useState } from "react";
 import { createRandomPost } from "../utils";
+import type { ArchiveOptions } from "../types";
 
 type Props = {
-  show: boolean;
+  archiveOptions: ArchiveOptions;
 }
 
 const handleRandomPost = () => {
   return Array.from({ length: 10000 }, () => createRandomPost());
 }
 
-const Archive = memo(function Archive({ show }: Props) {
+const Archive = memo(function Archive({ archiveOptions }: Props) {
   const [posts] = useState(handleRandomPost);
-  const [showArchive, setShowArchive] = useState(show);
+  const [showArchive, setShowArchive] = useState(archiveOptions.show);
 
   return (
     <aside>
-      <h2>Post archive</h2>
+      <h2>{archiveOptions.title}</h2>
       <button onClick={() => setShowArchive((s) => !s)}>
         {showArchive ? "Hide archive posts" : "Show archive posts"}
       </button>
