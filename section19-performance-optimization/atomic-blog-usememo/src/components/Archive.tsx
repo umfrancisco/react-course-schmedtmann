@@ -1,17 +1,17 @@
-import { useState } from "react";
-import type { Post } from "../types";
+import { memo, useState } from "react";
 import { createRandomPost } from "../utils";
 
 type Props = {
-  onAddPost: (val: Post) => void;
+  show: boolean;
 }
 
-function Archive({ onAddPost }: Props) {
-  const [posts] = useState(() =>
-    Array.from({ length: 100 }, () => createRandomPost())
-  );
+const handleRandomPost = () => {
+  return Array.from({ length: 10000 }, () => createRandomPost());
+}
 
-  const [showArchive, setShowArchive] = useState(false);
+const Archive = memo(function Archive({ show }: Props) {
+  const [posts] = useState(handleRandomPost);
+  const [showArchive, setShowArchive] = useState(show);
 
   return (
     <aside>
@@ -27,13 +27,13 @@ function Archive({ onAddPost }: Props) {
               <p>
                 <strong>{post.title}:</strong> {post.body}
               </p>
-              <button onClick={() => onAddPost(post)}>Add as new post</button>
+              {/* <button onClick={() => onAddPost(post)}>Add as new post</button> */}
             </li>
           ))}
         </ul>
       )}
     </aside>
   );
-}
+});
 
 export default Archive;
