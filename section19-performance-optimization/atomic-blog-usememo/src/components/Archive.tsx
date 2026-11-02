@@ -1,17 +1,13 @@
 import { memo, useState } from "react";
-import { createRandomPost } from "../utils";
 import type { ArchiveOptions } from "../types";
+import { handleRandomPost } from "../utils";
 
 type Props = {
   archiveOptions: ArchiveOptions;
 }
 
-const handleRandomPost = () => {
-  return Array.from({ length: 10000 }, () => createRandomPost());
-}
-
 const Archive = memo(function Archive({ archiveOptions }: Props) {
-  const [posts] = useState(handleRandomPost);
+  const [posts] = useState(() => handleRandomPost(10000));
   const [showArchive, setShowArchive] = useState(archiveOptions.show);
 
   return (

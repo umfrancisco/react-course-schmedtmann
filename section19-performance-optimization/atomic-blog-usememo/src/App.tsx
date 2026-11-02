@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Post } from "./types";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Archive from "./components/Archive";
 import Footer from "./components/Footer";
-import { createRandomPost } from "./utils";
-
-const archiveOptions = {
-  show: false,
-  title: "Post archive in addition to main posts",
-}
+import { handleRandomPost } from "./utils";
 
 function App() {
-  const [posts, setPosts] = useState(() =>
-    Array.from({ length: 30 }, () => createRandomPost())
-  );
+  const [posts, setPosts] = useState(() => handleRandomPost(8));
   const [searchQuery, setSearchQuery] = useState("");
   const [isFakeDark, setIsFakeDark] = useState(false);
 
@@ -41,6 +34,10 @@ function App() {
     },
     [isFakeDark]
   );
+
+  const archiveOptions = useMemo(() => {
+    return { show: false, title: `Post archive in addition to ${posts.length} posts` };
+  }, [posts.length]);
 
   return (
     <section>
