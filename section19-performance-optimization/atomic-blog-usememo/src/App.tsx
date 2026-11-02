@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Post } from "./types";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -20,9 +20,9 @@ function App() {
         )
       : posts;
 
-  function handleAddPost(post: Post) {
+  const handleAddPost = useCallback(function handleAddPost(post: Post) {
     setPosts((posts) => [post, ...posts]);
-  }
+  }, []);
 
   function handleClearPosts() {
     setPosts([]);
@@ -55,7 +55,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive archiveOptions={archiveOptions} />
+      <Archive archiveOptions={archiveOptions} onAddPost={handleAddPost} />
       <Footer />
     </section>
   );
