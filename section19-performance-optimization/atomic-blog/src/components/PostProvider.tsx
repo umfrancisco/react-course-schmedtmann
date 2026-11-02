@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { createRandomPost, PostContext } from "../services/api";
 import type { Post } from "../types";
 
@@ -28,14 +28,18 @@ function PostProvider({ children }: Props) {
   
   const searchedPosts = searchQuery.length > 0 ? searchPosts(posts) : posts;
 
-  return (
-    <PostContext.Provider value={{
+  const value = useMemo(() => {
+    return {
       posts: searchedPosts,
       onAddPost: handleAddPost,
       onClearPosts: handleClearPosts,
       searchQuery,
       setSearchQuery,
-    }}>
+    };
+  }, [searchQuery, searchedPosts]);
+
+  return (
+    <PostContext.Provider value={value}>
       {children}
     </PostContext.Provider>
   );
