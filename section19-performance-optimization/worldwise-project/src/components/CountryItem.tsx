@@ -1,3 +1,4 @@
+import type { Country } from "../types";
 import styles from "./CountryItem.module.css";
 
 type Props = {

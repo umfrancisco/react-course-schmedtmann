@@ -47,6 +47,18 @@
         "lng": 4.1301846058175915
       },
       "id": "HUtmxJ0ctxY"
+    },
+    {
+      "cityName": "Conde",
+      "country": "France",
+      "emoji": "",
+      "date": "2026-11-02T22:53:03.550Z",
+      "notes": "",
+      "position": {
+        "lat": 46.90532392369981,
+        "lng": 1.999482066042511
+      },
+      "id": "RMsIj90up8U"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

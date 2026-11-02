@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { Position } from "../types";
 
 export function useGeolocation(defaultPosition: Position | null) {
   const [isLoading, setIsLoading] = useState(false);
