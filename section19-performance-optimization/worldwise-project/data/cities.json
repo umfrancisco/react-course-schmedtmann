@@ -35,6 +35,18 @@
         "lng": 13.40762343732443
       },
       "id": "DaJ6OBTksOo"
+    },
+    {
+      "cityName": "Les Estables",
+      "country": "France",
+      "emoji": "",
+      "date": "2026-11-02T13:45:16.885Z",
+      "notes": "",
+      "position": {
+        "lat": 44.88732133889138,
+        "lng": 4.1301846058175915
+      },
+      "id": "HUtmxJ0ctxY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, type ReactNode } from "react";
+import { useCallback, useEffect, useReducer, type ReactNode } from "react";
 import { CitiesContext } from "./CitiesContext";
 import type { City, CityPayloadAction, CityState } from "../types";
 
@@ -46,14 +46,14 @@ function CitiesContextProvider({ children }: Props) {
       .catch(err => dispatch({ type: "rejected", payload: err }));
   }, []);
 
-  function getCity(id: string) {
+  const getCity = useCallback(function getCity(id: string) {
     if (id === currentCity?.id) return;
     dispatch({ type: "loading" });
     fetch(`${import.meta.env.VITE_API_URL}/cities/${id}`)
       .then(res => res.json())
       .then(data => dispatch({ type: "city/loaded", payload: data }))
       .catch(err => dispatch({ type: "rejected", payload: err }));
-  }
+  }, [currentCity?.id]);
 
   function createCity(city: City) {
     dispatch({ type: "loading" });
@@ -78,15 +78,17 @@ function CitiesContextProvider({ children }: Props) {
       .catch(err => dispatch({ type: "rejected", payload: err }));
   }
 
+  const value = {
+    cities,
+    isLoading,
+    currentCity,
+    getCity,
+    createCity,
+    deleteCity
+  };
+
   return (
-    <CitiesContext.Provider value={{
-      cities,
-      isLoading,
-      currentCity,
-      getCity,
-      createCity,
-      deleteCity
-    }}>
+    <CitiesContext.Provider value={value}>
       {children}
     </CitiesContext.Provider>
   );
