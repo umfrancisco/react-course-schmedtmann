@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import clickSound from "/src/assets/ClickSound.m4a";
 import type { Workout } from "../types";
 
@@ -84,4 +84,4 @@ function Calculator({ workouts, allowSound }: Props) {
   );
 }
 
-export default Calculator;
+export default memo(Calculator);

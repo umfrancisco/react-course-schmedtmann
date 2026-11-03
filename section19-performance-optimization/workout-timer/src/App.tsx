@@ -1,7 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ToggleSounds from "./components/ToggleSounds";
 import Calculator from "./components/Calculator";
 import type { Workout } from "./types";
+
+const formatTime = (date: Date) => {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+}
 
 function App() {
   const [allowSound, setAllowSound] = useState(true);
@@ -10,38 +20,32 @@ function App() {
   // Will be be AM or PM
   const partOfDay = time.slice(-2);
 
-  const workouts: Workout[] = [
-    {
-      name: "Full-body workout",
-      numExercises: partOfDay === "AM" ? 9 : 8,
-    },
-    {
-      name: "Arms + Legs",
-      numExercises: 6,
-    },
-    {
-      name: "Arms only",
-      numExercises: 3,
-    },
-    {
-      name: "Legs only",
-      numExercises: 4,
-    },
-    {
-      name: "Core only",
-      numExercises: partOfDay === "AM" ? 5 : 4,
-    },
-  ];
-
-  function formatTime(date: Date) {
-    return new Intl.DateTimeFormat("en", {
-      month: "short",
-      year: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    }).format(date);
-  }
+  const workouts: Workout[] = useMemo(() => {
+    return (
+      [
+        {
+          name: "Full-body workout",
+          numExercises: partOfDay === "AM" ? 9 : 8,
+        },
+        {
+          name: "Arms + Legs",
+          numExercises: 6,
+        },
+        {
+          name: "Arms only",
+          numExercises: 3,
+        },
+        {
+          name: "Legs only",
+          numExercises: 4,
+        },
+        {
+          name: "Core only",
+          numExercises: partOfDay === "AM" ? 5 : 4,
+        },
+      ]
+    );
+  }, [partOfDay]);
 
   useEffect(function () {
     const id = setInterval(function () {
