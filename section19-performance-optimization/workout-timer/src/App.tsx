@@ -11,7 +11,7 @@ const formatTime = (date: Date) => {
     minute: "2-digit",
     second: "2-digit",
   }).format(date);
-}
+};
 
 function App() {
   const [allowSound, setAllowSound] = useState(true);

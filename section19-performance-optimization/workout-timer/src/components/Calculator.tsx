@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import clickSound from "/src/assets/ClickSound.m4a";
 import type { Workout } from "../types";
 
@@ -7,12 +7,20 @@ type Props = {
   allowSound: boolean;
 }
 
-function Calculator({ workouts, allowSound }: Props) {
+const Calculator = memo(function Calculator({ workouts, allowSound }: Props) {
   const [number, setNumber] = useState(0);
   const [sets, setSets] = useState(3);
   const [speed, setSpeed] = useState(90);
   const [durationBreak, setDurationBreak] = useState(5);
   const [duration, setDuration] = useState(0);
+
+  const playSound = () => {
+    if (!allowSound) return;
+    const sound = new Audio(clickSound);
+    sound.play();
+  };
+
+  useEffect(() => playSound(), [duration, allowSound]);
 
   useEffect(() => {
     setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
@@ -21,12 +29,6 @@ function Calculator({ workouts, allowSound }: Props) {
   // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
-
-  const playSound = function () {
-    if (!allowSound) return;
-    const sound = new Audio(clickSound);
-    sound.play();
-  };
 
   const handleInc = () => {
     setDuration(duration => Math.floor(duration) + 1);
@@ -97,6 +99,6 @@ function Calculator({ workouts, allowSound }: Props) {
       </section>
     </>
   );
-}
+});
 
-export default memo(Calculator);
+export default Calculator;
