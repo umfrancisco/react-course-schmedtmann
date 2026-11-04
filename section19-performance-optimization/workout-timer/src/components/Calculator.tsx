@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import clickSound from "/src/assets/ClickSound.m4a";
 import type { Workout } from "../types";
 
@@ -12,8 +12,13 @@ function Calculator({ workouts, allowSound }: Props) {
   const [sets, setSets] = useState(3);
   const [speed, setSpeed] = useState(90);
   const [durationBreak, setDurationBreak] = useState(5);
+  const [duration, setDuration] = useState(0);
 
-  const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
+  useEffect(() => {
+    setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
+  }, [number, sets, speed, durationBreak]);
+
+  // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
 
@@ -21,6 +26,16 @@ function Calculator({ workouts, allowSound }: Props) {
     if (!allowSound) return;
     const sound = new Audio(clickSound);
     sound.play();
+  };
+
+  const handleInc = () => {
+    setDuration(duration => Math.floor(duration) + 1);
+  };
+
+  const handleDec = () => {
+    setDuration(duration => {
+      return duration > 1 ? Math.ceil(duration) - 1 : 0;
+    });
   };
 
   return (
@@ -43,7 +58,7 @@ function Calculator({ workouts, allowSound }: Props) {
             min="1"
             max="5"
             value={sets}
-            onChange={(e) => setSets(Number(e.target.value))}
+            onChange={(e) => setSets(+e.target.value)}
           />
           <span>{sets}</span>
         </div>
@@ -55,7 +70,7 @@ function Calculator({ workouts, allowSound }: Props) {
             max="180"
             step="30"
             value={speed}
-            onChange={(e) => setSpeed(Number(e.target.value))}
+            onChange={(e) => setSpeed(+e.target.value)}
           />
           <span>{speed} sec/exercise</span>
         </div>
@@ -66,19 +81,19 @@ function Calculator({ workouts, allowSound }: Props) {
             min="1"
             max="10"
             value={durationBreak}
-            onChange={(e) => setDurationBreak(Number(e.target.value))}
+            onChange={(e) => setDurationBreak(+e.target.value)}
           />
           <span>{durationBreak} minutes/break</span>
         </div>
       </form>
       <section>
-        <button onClick={() => {}}>–</button>
+        <button onClick={handleDec}>-</button>
         <p>
           {mins < 10 && "0"}
           {mins}:{seconds < 10 && "0"}
           {seconds}
         </p>
-        <button onClick={() => {}}>+</button>
+        <button onClick={handleInc}>+</button>
       </section>
     </>
   );
