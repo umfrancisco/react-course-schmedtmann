@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Calculator = memo(function Calculator({ workouts, allowSound }: Props) {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(workouts.at(0)?.numExercises);
   const [sets, setSets] = useState(3);
   const [speed, setSpeed] = useState(90);
   const [durationBreak, setDurationBreak] = useState(5);
@@ -23,10 +23,15 @@ const Calculator = memo(function Calculator({ workouts, allowSound }: Props) {
   useEffect(() => playSound(), [duration, allowSound]);
 
   useEffect(() => {
-    setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
+    if (number) {
+      setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
+    }
   }, [number, sets, speed, durationBreak]);
 
-  // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
+  useEffect(() => {
+    document.title = `Your ${number}-exercises workout`;
+  }, [number]);
+
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
 
