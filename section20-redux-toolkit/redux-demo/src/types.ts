@@ -7,4 +7,10 @@ export type BankAccountState = {
 
 export type PayloadAction = {
   type: "account/deposit", payload: number;
+} | {
+  type: "account/withdraw", payload: number;
+} | {
+  type: "account/requestLoan", payload: number;
+} | {
+  type: "account/payLoan";
 };
