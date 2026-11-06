@@ -57,14 +57,22 @@ export type AuthState = {
   isAuthenticated: boolean;
 }
 
-export type CityPayloadAction = 
-| { type: "loading"; } 
-| { type: "cities/loaded", payload: City[]; } 
-| { type: "city/loaded", payload: City; } 
-| { type: "city/created", payload: City; } 
-| { type: "city/deleted", payload: string; } 
-| { type: "rejected", payload: Error; }
+export type CityPayloadAction = { 
+  type: "loading"; 
+} | { 
+  type: "cities/loaded", payload: City[];
+} | {
+  type: "city/loaded", payload: City; 
+} | { 
+  type: "city/created", payload: City; 
+} | { 
+  type: "city/deleted", payload: string; 
+} | {
+  type: "rejected", payload: Error; 
+};
 
-export type AuthPayloadAction = 
-| { type: "login", payload: User; } 
-| { type: "logout"; }
+export type AuthPayloadAction = { 
+  type: "login", payload: User; 
+} | { 
+  type: "logout"; 
+};

@@ -19,15 +19,23 @@ export type QuestionType = {
   points: number;
 };
 
-export type PayloadAction = 
-| { type: "received", payload: QuestionType[]; } 
-| { type: "failed"; } 
-| { type: "start"; } 
-| { type: "answer", payload: number; } 
-| { type: "next_question"; } 
-| { type: "finish"; } 
-| { type: "reset"; } 
-| { type: "timer"; };
+export type PayloadAction = { 
+  type: "received", payload: QuestionType[]; 
+} | { 
+  type: "failed"; 
+} | { 
+  type: "start"; 
+} | { 
+  type: "answer", payload: number; 
+} | { 
+  type: "next_question"; 
+} | { 
+  type: "finish"; 
+} | { 
+  type: "reset"; 
+} | { 
+  type: "timer"; 
+};
 
 export type QuizContextType = {
   state: State;

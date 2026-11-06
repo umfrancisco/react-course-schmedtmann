@@ -16,8 +16,8 @@ function AccountOperations() {
   function handlePayLoan() {}
 
   function checkIfValid(value: string) {
-    const num = Number(value);
-    if (num.toString() === "NaN") {
+    const num = parseFloat(value);
+    if (isNaN(num)) {
       return 0;
     }
     return num;
