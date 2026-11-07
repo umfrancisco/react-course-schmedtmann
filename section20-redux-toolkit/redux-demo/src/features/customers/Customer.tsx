@@ -1,5 +1,13 @@
+import { useSelector } from "react-redux";
+import type { StoreType } from "../../types";
+
 function Customer() {
-  return <h2>👋 Welcome, %NAME%</h2>;
+  let customerName = "";
+  useSelector<StoreType>((store) => customerName = store.customer.fullName);
+
+  return (
+    <h2>👋 Welcome, {customerName}</h2>
+  );
 }
 
 export default Customer;

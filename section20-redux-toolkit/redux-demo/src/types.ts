@@ -11,6 +11,11 @@ export type CustomerState = {
   createdAt: string,
 };
 
+export type StoreType = {
+  account: BankAccountState;
+  customer: CustomerState;
+}
+
 export type PayloadAction = {
   type: "account/deposit", payload: number;
 } | {
