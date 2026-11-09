@@ -1,19 +1,48 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../store";
+import { deposit, payLoan, requestLoan, withdraw } from "./accountSlice";
+import type { BankAccountState } from "../../types";
 
 function AccountOperations() {
   const [depositAmount, setDepositAmount] = useState(0);
   const [withdrawalAmount, setWithdrawalAmount] = useState(0);
   const [loanAmount, setLoanAmount] = useState(0);
-  const [loanPurpose, setLoanPurpose] = useState(0);
+  const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
+  const dispatch = useDispatch<AppDispatch>();
+  const account = useSelector<RootState, BankAccountState>(store => store.account);
 
-  function handleDeposit() {}
+  console.log(account);
 
-  function handleWithdrawal() {}
+  function handleDeposit() {
+    if (!depositAmount) {
+      return;
+    }
+    dispatch(deposit(depositAmount));
+    setDepositAmount(0);
+  }
 
-  function handleRequestLoan() {}
+  function handleWithdrawal() {
+    if (!withdrawalAmount) {
+      return;
+    }
+    dispatch(withdraw(withdrawalAmount));
+    setWithdrawalAmount(0);
+  }
 
-  function handlePayLoan() {}
+  function handleRequestLoan() {
+    if (!loanAmount || !loanPurpose) {
+      return;
+    }
+    dispatch(requestLoan(loanAmount, loanPurpose));
+  }
+
+  function handlePayLoan() {
+    dispatch(payLoan());
+    setLoanAmount(0);
+    setLoanPurpose("");
+  }
 
   function checkIfValid(value: string) {
     const num = parseFloat(value);
@@ -43,7 +72,7 @@ function AccountOperations() {
             <option value="GBP">British Pound</option>
           </select>
 
-          <button onClick={handleDeposit}>Deposit {depositAmount}</button>
+          <button onClick={handleDeposit}>Deposit</button>
         </div>
 
         <div>
@@ -53,9 +82,7 @@ function AccountOperations() {
             value={withdrawalAmount}
             onChange={(e) => setWithdrawalAmount(checkIfValid(e.target.value))}
           />
-          <button onClick={handleWithdrawal}>
-            Withdraw {withdrawalAmount}
-          </button>
+          <button onClick={handleWithdrawal}>Withdraw</button>
         </div>
 
         <div>
@@ -65,19 +92,23 @@ function AccountOperations() {
             value={loanAmount}
             onChange={(e) => setLoanAmount(checkIfValid(e.target.value))}
             placeholder="Loan amount"
+            disabled={account.loan > 0}
           />
           <input
             value={loanPurpose}
-            onChange={(e) => setLoanPurpose(checkIfValid(e.target.value))}
+            onChange={(e) => setLoanPurpose(e.target.value)}
             placeholder="Loan purpose"
+            disabled={account.loan > 0}
           />
           <button onClick={handleRequestLoan}>Request loan</button>
         </div>
 
-        <div>
-          <span>Pay back $X</span>
-          <button onClick={handlePayLoan}>Pay loan</button>
-        </div>
+        {account.loan > 0 && (
+          <div>
+            <span>Pay back ${account.loan}</span>
+            <button onClick={handlePayLoan}>Pay loan</button>
+          </div>
+        )}
       </div>
     </div>
   );
