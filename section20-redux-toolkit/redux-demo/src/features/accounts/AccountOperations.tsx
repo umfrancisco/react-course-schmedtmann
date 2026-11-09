@@ -46,7 +46,7 @@ function AccountOperations() {
   }
 
   function checkIfValid(value: string) {
-    const num = parseFloat(value);
+    const num = Number(value);
     if (isNaN(num)) {
       return 0;
     }
