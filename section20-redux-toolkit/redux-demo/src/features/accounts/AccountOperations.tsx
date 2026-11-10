@@ -13,15 +13,12 @@ function AccountOperations() {
   const dispatch = useDispatch<AppDispatch>();
   const account = useSelector<RootState, BankAccountState>(store => store.account);
 
-  console.log(account);
-
   function handleDeposit() {
     if (!depositAmount) {
       return;
     }
-    dispatch(deposit(depositAmount, currency));
+    dispatch(deposit(depositAmount));
     setDepositAmount(0);
-    setCurrency("USD");
   }
 
   function handleWithdrawal() {
@@ -36,7 +33,8 @@ function AccountOperations() {
     if (!loanAmount || !loanPurpose) {
       return;
     }
-    dispatch(requestLoan(loanAmount, loanPurpose));
+    const payload = { amount: loanAmount, purpose: loanPurpose };
+    dispatch(requestLoan(payload));
   }
 
   function handlePayLoan() {

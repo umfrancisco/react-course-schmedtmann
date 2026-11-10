@@ -1,15 +1,15 @@
 
-export type BankAccountState = {
-  balance: number,
-  loan: number,
-  loanPurpose: string,
-  isLoading: boolean,
+export interface BankAccountState {
+  balance: number;
+  loan: number;
+  loanPurpose: string;
+  isLoading: boolean;
 };
 
-export type CustomerState = {
-  fullName: string,
-  nationalID: string,
-  createdAt: string,
+export interface CustomerState {
+  fullName: string;
+  nationalID: string;
+  createdAt: string;
 };
 
 export type PayloadAction = {
