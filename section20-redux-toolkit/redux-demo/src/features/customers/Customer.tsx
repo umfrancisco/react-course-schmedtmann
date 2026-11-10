@@ -5,6 +5,7 @@ import type { CustomerState } from "../../types";
 function Customer() {
   const customer = useSelector<RootState, CustomerState>((store) => store.customer);
   const nameWithUpperCase = customer.fullName.charAt(0).toUpperCase() + customer.fullName.slice(1);
+  console.log(customer);
 
   if (customer.fullName === "") {
     return null;
