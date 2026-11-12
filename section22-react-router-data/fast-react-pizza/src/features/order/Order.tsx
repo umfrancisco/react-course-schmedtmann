@@ -3,12 +3,6 @@ import { getOrder } from "../../services/apiRestaurant";
 import type { OrderType } from "../../types";
 import { calcMinutesLeft, formatCurrency, formatDate } from "../../utils/helpers";
 
-export const orderLoader = async ({ params }: LoaderFunctionArgs) => {
-  // test ids = IIDSAT, CQE92U
-  const order: OrderType = await getOrder(params.orderId);
-  return order;
-}
-
 function Order() {
   const order = useLoaderData();
   const deliveryIn = calcMinutesLeft(order.estimatedDelivery);
@@ -40,6 +34,12 @@ function Order() {
       </div>
     </div>
   );
+}
+
+export const orderLoader = async ({ params }: LoaderFunctionArgs) => {
+  // test ids = IIDSAT, CQE92U
+  const order: OrderType = await getOrder(params.orderId);
+  return order;
 }
 
 export default Order;

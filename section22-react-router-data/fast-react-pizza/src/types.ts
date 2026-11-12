@@ -27,9 +27,9 @@ export interface OrderType {
   phone: string;
   address: string;
   priority: boolean;
-  estimatedDelivery: string;
+  estimatedDelivery?: string;
   cart: CartType[];
-  position: string;
-  orderPrice: number;
-  priorityPrice: number;
+  position?: string;
+  orderPrice?: number;
+  priorityPrice?: number;
 }

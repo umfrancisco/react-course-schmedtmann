@@ -22,7 +22,7 @@ export async function getOrder(id: string | undefined): Promise<OrderType> {
     });
 }
 
-export async function createOrder(newOrder: OrderType) {
+export async function createOrder(newOrder: OrderType): Promise<OrderType> {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
