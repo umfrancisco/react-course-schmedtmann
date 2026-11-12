@@ -5,10 +5,12 @@ import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
 import Home from "./ui/Home";
+import PageNotFound from "./ui/PageNotFound";
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <PageNotFound />,
     children: [
       { 
         path: "/", 
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
         path: "/menu",
         element: <Menu />,
         loader: menuLoader,
+        errorElement: <PageNotFound />,
       },
       {
         path: "/cart",
