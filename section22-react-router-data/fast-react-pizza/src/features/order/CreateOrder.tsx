@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { OrderItem } from "../../types";
+import type { Cart } from "../../types";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str: string) =>
@@ -7,7 +7,7 @@ const isValidPhone = (str: string) =>
     str
   );
 
-const fakeCart: OrderItem[] = [
+const fakeCart: Cart[] = [
   {
     pizzaId: 12,
     name: "Mediterranean",

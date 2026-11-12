@@ -11,12 +11,14 @@ export async function getMenu(): Promise<MenuType[]> {
     });
 }
 
-export async function getOrder(id: number) {
+export async function getOrder(id: string | undefined): Promise<OrderType> {
   return fetch(`${API_URL}/order/${id}`)
     .then(res => res.json())
-    .then(data => data.data)
-    .catch(() => {
-      throw Error(`Couldn't find order #${id}`)
+    .then(data => {
+      if (data.status === "fail") {
+        throw Error(`Couldn't find order #${id}`);
+      }
+      return data.data;
     });
 }
 

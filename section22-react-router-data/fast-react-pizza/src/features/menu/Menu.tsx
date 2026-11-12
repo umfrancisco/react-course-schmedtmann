@@ -3,7 +3,7 @@ import { getMenu } from "../../services/apiRestaurant";
 import type { MenuType } from "../../types";
 import MenuItem from "./MenuItem";
 
-export const loader = async () => {
+export const menuLoader = async () => {
   const menu = await getMenu();
   return menu;
 }
