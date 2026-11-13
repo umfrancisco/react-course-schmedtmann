@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { CartType, OrderType } from "../../types";
-import { Form, redirect, type ActionFunctionArgs } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation, type ActionFunctionArgs } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
@@ -36,6 +36,9 @@ const fakeCart: CartType[] = [
 function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+  const formErrors = useActionData();
 
   return (
     <div>
@@ -52,6 +55,7 @@ function CreateOrder() {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.errorMessage && <p>{formErrors.errorMessage}</p>}
         </div>
 
         <div>
@@ -66,15 +70,15 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+          // value={withPriority}
+          // onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button>Order now</button>
+          <button disabled={isSubmitting}>{isSubmitting ? "Placing order..." : "Order now"}</button>
         </div>
       </Form>
     </div>
@@ -84,7 +88,10 @@ function CreateOrder() {
 export const createOrderAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  const order: OrderType = { 
+  if (!isValidPhone(data.phone.toString())) {
+    return { errorMessage: "Please give us your correct phone number." };
+  }
+  const order: OrderType = {
     id: crypto.randomUUID(),
     customer: data.customer.toString(),
     phone: data.phone.toString(),
