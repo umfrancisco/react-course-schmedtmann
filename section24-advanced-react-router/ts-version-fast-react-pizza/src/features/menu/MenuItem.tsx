@@ -4,6 +4,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import DeleteItem from "../cart/DeleteItem";
 import type { MenuType } from "../../types";
+import type { RootState } from "../../store";
 
 type Props = {
   pizza: MenuType;
@@ -11,7 +12,7 @@ type Props = {
 
 function MenuItem({ pizza }: Props) {
   const dispatch = useDispatch();
-  const currentQuantity = useSelector(getCurrentQuantityById(pizza.id));
+  const currentQuantity = useSelector<RootState, number>(getCurrentQuantityById(pizza.id));
   const isInCart = currentQuantity > 0;
 
   const handleAddToCart = () => {

@@ -13,7 +13,7 @@ export async function getMenu() {
   return data;
 }
 
-export async function getOrder(id: number) {
+export async function getOrder(id: string | undefined) {
   const res = await fetch(`${API_URL}/order/${id}`);
   
   if (!res.ok) {

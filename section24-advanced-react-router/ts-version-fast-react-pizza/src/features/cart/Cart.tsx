@@ -6,10 +6,11 @@ import { clearCart, getCart } from "./cartSlice";
 import { getUsername } from "../user/userSlice";
 import EmptyCart from "./EmptyCart";
 import type { CartType } from "../../types";
+import type { RootState } from "../../store";
 
 function Cart() {
-  const cart: CartType = useSelector(getCart);
-  const username = useSelector(getUsername);
+  const cart = useSelector<RootState, CartType>(getCart);
+  const username = useSelector<RootState, string>(getUsername);
   const dispatch = useDispatch();
 
   const handleClearCart = () => {

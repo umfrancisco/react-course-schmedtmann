@@ -1,8 +1,8 @@
-import type { CartType } from "../../types";
+import type { CartItemType } from "../../types";
 import { formatCurrency } from "../../utils/helpers";
 
 type Props = {
-  item: CartType;
+  item: CartItemType;
   isLoadingIngredients?: any;
   ingredients?: any;
 }
