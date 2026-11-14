@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Form, redirect, useActionData, useNavigation, type ActionFunctionArgs } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
-import type { CartType } from "../../types";
+import type { CartItemType } from "../../types";
 import Button from "../../ui/Button";
 import type { RootState } from "../../store";
 
@@ -11,7 +11,7 @@ const isValidPhone = (str: string) =>
     str
   );
 
-const fakeCart: CartType[] = [
+const fakeCart: CartItemType[] = [
   {
     pizzaId: 12,
     name: "Mediterranean",
@@ -102,7 +102,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const order = { 
-    id: crypto.randomUUID(),
+    id: "",
     customer: data.customer.toString(),
     phone: data.phone.toString(),
     address: data.address.toString(),

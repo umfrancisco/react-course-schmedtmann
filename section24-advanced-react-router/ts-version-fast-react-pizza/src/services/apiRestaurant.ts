@@ -1,8 +1,8 @@
-import type { OrderType } from "../types";
+import type { MenuType, OrderType } from "../types";
 
 const API_URL = "https://react-fast-pizza-api.jonas.io/api";
 
-export async function getMenu() {
+export async function getMenu(): Promise<MenuType[]> {
   const res = await fetch(`${API_URL}/menu`);
 
   if (!res.ok) {
@@ -13,7 +13,7 @@ export async function getMenu() {
   return data;
 }
 
-export async function getOrder(id: string | undefined) {
+export async function getOrder(id: string | undefined): Promise<OrderType> {
   const res = await fetch(`${API_URL}/order/${id}`);
   
   if (!res.ok) {
@@ -24,7 +24,7 @@ export async function getOrder(id: string | undefined) {
   return data;
 }
 
-export async function createOrder(newOrder: OrderType) {
+export async function createOrder(newOrder: OrderType): Promise<OrderType> {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
