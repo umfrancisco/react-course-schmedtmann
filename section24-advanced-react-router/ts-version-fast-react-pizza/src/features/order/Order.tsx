@@ -2,10 +2,11 @@ import OrderItem from "./OrderItem";
 import { useLoaderData, type LoaderFunctionArgs } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
 import { calcMinutesLeft, formatCurrency, formatDate } from "../../utils/helpers";
-import type { OrderType } from "../../types";
+import type { CartItemType } from "../../types";
 
+// test ids = IIDSAT, CQE92U
 function Order() {
-  const order: OrderType = useLoaderData();
+  const order = useLoaderData();
   const deliveryIn = calcMinutesLeft(order.estimatedDelivery);
 
   return (
@@ -37,7 +38,7 @@ function Order() {
       </div>
 
       <ul className="dive-stone-200 divide-y border-b border-t">
-        {order.cart.cart.map((item) => (
+        {order.cart.map((item: CartItemType) => (
           <OrderItem item={item} key={item.pizzaId} />
         ))}
       </ul>

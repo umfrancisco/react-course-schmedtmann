@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Form, redirect, useActionData, useNavigation, type ActionFunctionArgs } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
-import type { CartItemType } from "../../types";
+import type { CartItemType, OrderType } from "../../types";
 import Button from "../../ui/Button";
 import type { RootState } from "../../store";
 
@@ -101,19 +101,21 @@ function CreateOrder() {
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  const order = { 
+  const order: OrderType = {
     id: "",
     customer: data.customer.toString(),
     phone: data.phone.toString(),
     address: data.address.toString(),
     priority: data.priority ? true : false,
+    status: "",
     cart: JSON.parse(data.cart.toString()),
+    orderPrice: 0,
+    priorityPrice: 0,
   };
   if (!isValidPhone(data.phone.toString())) {
     return { error: "Please give us your correct phone number." };
   }
   const newOrder = await createOrder(order);
-  console.log(newOrder);
   return redirect(`/order/${newOrder.id}`);
 }
 
