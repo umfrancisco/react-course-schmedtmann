@@ -101,14 +101,14 @@ function CreateOrder() {
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
+  const cart: CartItemType[] = JSON.parse(data.cart.toString());
   const order: OrderType = {
-    id: "",
     customer: data.customer.toString(),
     phone: data.phone.toString(),
     address: data.address.toString(),
     priority: data.priority ? true : false,
     status: "",
-    cart: JSON.parse(data.cart.toString()),
+    cart: cart,
     orderPrice: 0,
     priorityPrice: 0,
   };

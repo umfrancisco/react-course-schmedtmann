@@ -26,14 +26,14 @@ export interface CartType {
 }
 
 export interface OrderType {
-  id: string;
+  id?: string;
   customer: string;
   phone: string;
   address: string;
   priority: boolean;
   status: string;
   estimatedDelivery?: string;
-  cart: CartType;
+  cart: CartItemType[];
   position?: string;
   orderPrice: number;
   priorityPrice: number;

@@ -2,11 +2,11 @@ import OrderItem from "./OrderItem";
 import { useLoaderData, type LoaderFunctionArgs } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
 import { calcMinutesLeft, formatCurrency, formatDate } from "../../utils/helpers";
-import type { CartItemType } from "../../types";
+import type { CartItemType, OrderType } from "../../types";
 
 // test ids = IIDSAT, CQE92U
 function Order() {
-  const order = useLoaderData();
+  const order: OrderType = useLoaderData();
   const deliveryIn = calcMinutesLeft(order.estimatedDelivery);
 
   return (
