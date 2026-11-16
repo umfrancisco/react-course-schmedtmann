@@ -4,6 +4,13 @@ export interface Position {
   longitude: number;
 }
 
+export interface Address {
+  locality: string;
+  city: string;
+  postcode: string;
+  countryName: string;
+}
+
 export interface MenuType {
   id: number;
   imageUrl: string;
@@ -41,6 +48,10 @@ export interface OrderType {
 
 export interface UserType {
   username: string;
+  status: "idle" | "loading" | "error";
+  position: Position | null;
+  address: string;
+  error: string | undefined;
 }
 
 export interface CartState {
