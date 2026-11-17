@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Form, redirect, useActionData, useNavigation, type ActionFunctionArgs } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
-import type { AppDispatch, RootState } from "../../store";
+import type { AppDispatch } from "../../store";
 import store from "../../store";
-import type { CartItemType, OrderType, UserState, UserType } from "../../types";
+import type { CartItemType, OrderType } from "../../types";
 import Button from "../../ui/Button";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import EmptyCart from "../cart/EmptyCart";
 import { formatCurrency } from "../../utils/helpers";
 import { useState } from "react";
-import { fetchAddress } from "../user/userSlice";
+import { fetchAddress, getUser } from "../user/userSlice";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str: string) =>
@@ -18,19 +18,17 @@ const isValidPhone = (str: string) =>
   );
 
 function CreateOrder() {
-  const [withPriority, setWithPriority] = useState<1 | 0>(0);
-  const username = useSelector<RootState, string>(state => state.user.username);
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
   const dispatch = useDispatch<AppDispatch>();
-  const user = useSelector((state: UserState) => state.user);
-  console.log(user);
-
+  const navigation = useNavigation();
   const { cart } = useSelector(getCart);
-  const cartStr = JSON.stringify(cart);
-  
   const totalCartPrice = useSelector(getTotalCartPrice);
+  const user = useSelector(getUser);
+  const [withPriority, setWithPriority] = useState<1 | 0>(0);
+
+  const isLoadingAddress = user.status === "loading";
+  const isSubmitting = navigation.state === "submitting";
+  const cartStr = JSON.stringify(cart);
   const priorityPrice = withPriority === 1 ? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
 
@@ -43,11 +41,10 @@ function CreateOrder() {
   return (
     <div className="px-4 py-6">
       <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
-      <button onClick={() => dispatch(fetchAddress())}>Get position</button>
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
-          <input className="input grow" type="text" name="customer" defaultValue={username} required />
+          <input className="input grow" type="text" name="customer" defaultValue={user.username} required />
         </div>
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Phone number</label>
@@ -60,16 +57,26 @@ function CreateOrder() {
             )}
           </div>
         </div>
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="relative mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input
               className="input w-full"
               type="text"
               name="address"
+              disabled={isLoadingAddress}
+              defaultValue={user.address}
               required
             />
+            {user.status === "error" && (
+              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
+                {user.error}
+              </p>
+            )}
           </div>
+          {!user.position && <span className="absolute right-[5px] top-[5px] z-1">
+            <Button type="small" disabled={isLoadingAddress} onClick={() => dispatch(fetchAddress())}>Get position</Button>
+          </span>}
         </div>
         <div className="mb-12 flex items-center gap-5">
           <input
@@ -86,7 +93,8 @@ function CreateOrder() {
         </div>
         <div>
           <input type="hidden" name="cart" value={cartStr} />
-          <Button disabled={isSubmitting} type="primary">
+          <input type="hidden" name="position" value={user.position ? `${user.position.latitude},${user.position.longitude}` : ""} />
+          <Button disabled={isSubmitting || isLoadingAddress} type="primary">
             {isSubmitting ? "Placing order...." : `Order now for ${formatCurrency(totalPrice)}`}
           </Button>
         </div>
@@ -103,6 +111,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     customer: data.customer.toString(),
     phone: data.phone.toString(),
     address: data.address.toString(),
+    position: data.position.toString(),
     priority: data.priority ? true : false,
     status: "",
     cart: cart,
@@ -112,11 +121,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   if (!isValidPhone(data.phone.toString())) {
     return { error: "Please give us your correct phone number." };
   }
+
   const newOrder = await createOrder(order);
-
-  // do NOT over use 
   store.dispatch(clearCart());
-
   return redirect(`/order/${newOrder.id}`);
 }
 
